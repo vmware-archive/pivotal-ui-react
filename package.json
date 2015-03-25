@@ -1,0 +1,45 @@
+{
+  "name": "pivotal-ui-react",
+  "version": "0.0.1",
+  "description": "React components based on a custom version of the Bootstrap library",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pivotal-cf/pivotal-ui-react.git"
+  },
+  "keywords": [
+    "React",
+    "Bootstrap",
+    "Pivotal UI"
+  ],
+  "author": "Pivotal, Inc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pivotal-cf/pivotal-ui-react/issues"
+  },
+  "homepage": "https://github.com/pivotal-cf/pivotal-ui-react",
+  "devDependencies": {
+    "babel-core": "^4.7.16",
+    "babel-eslint": "^2.0.2",
+    "babel-loader": "^4.2.0",
+    "eslint-plugin-react": "^1.6.1",
+    "gulp": "git://github.com/rdy/gulp.git#2c7d09c20ef9e2ae1ebe0a53a03ba0f0e52fc130",
+    "gulp-eslint": "^0.7.0",
+    "gulp-header": "^1.2.2",
+    "gulp-jasmine-browser": "0.0.3",
+    "gulp-load-plugins": "^0.9.0",
+    "gulp-plumber": "^1.0.0",
+    "gulp-webpack": "^1.3.0",
+    "jasmine_dom_matchers": "^0.2.1",
+    "jquery": "^2.1.3",
+    "require-dir": "^0.3.0",
+    "run-sequence": "^1.0.2",
+    "webpack": "^1.7.3"
+  },
+  "dependencies": {
+    "babel": "^4.7.16",
+    "react": "0.12.1",
+    "react-bootstrap": "^0.13.0"
+  }
+}
