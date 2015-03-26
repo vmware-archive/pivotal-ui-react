@@ -1,3 +1,5 @@
+var path = require('path');
+
 module.exports = function(env = null) {
   return Object.assign({}, {
     module: {
@@ -6,9 +8,15 @@ module.exports = function(env = null) {
       ]
     },
     output: {
-      filename: '[name].js',
-      chunkFilename: '[id].js',
+      library: 'pivotal-ui-react.[name]',
+      libraryTarget:  'umd',
+      path: path.resolve(__dirname, '..', '..', 'dist'),
+      filename: '[name]/[name].js',
+      chunkFilename: '[name]/[name].js',
       pathinfo: true
+    },
+    externals: {
+      react: true
     }
   }, env && require(`./${env}`));
 };

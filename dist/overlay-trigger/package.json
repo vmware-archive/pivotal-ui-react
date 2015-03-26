@@ -1,7 +1,7 @@
 {
   "name": "pivotal-ui-react.overlay-trigger",
   "version": "0.0.1",
-  "description": "A React implementation of the Bootstrap Overlay Trigger. A wrapper for react-bootstrap.",
+  "description": "overlay-trigger",
   "main": "overlay-trigger.js",
   "repository": {
     "type": "git",
@@ -10,8 +10,10 @@
   "keywords": [
     "bootstrap",
     "react",
-    "pivotal ui"
+    "pivotal ui",
+    "pivotal ui modularized"
   ],
   "author": "Pivotal",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {}
 }

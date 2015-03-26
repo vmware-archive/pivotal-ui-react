@@ -1,18 +1,19 @@
 {
   "name": "pivotal-ui-react.tooltip",
   "version": "0.0.1",
-  "description": "A React implementation of the Bootstrap tooltip. A wrapper for react-bootstrap.",
+  "description": "tooltip",
   "main": "tooltip.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/pivotal-cf/pivotal-ui-react.git"
   },
   "keywords": [
-    "tooltip",
     "bootstrap",
     "react",
-    "pivotal ui"
+    "pivotal ui",
+    "pivotal ui modularized"
   ],
   "author": "Pivotal",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {}
 }
