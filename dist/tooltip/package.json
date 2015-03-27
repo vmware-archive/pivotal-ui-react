@@ -15,5 +15,7 @@
   ],
   "author": "Pivotal",
   "license": "MIT",
-  "dependencies": {}
+  "peerDependencies": {
+    "react": "0.12"
+  }
 }

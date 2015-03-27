@@ -15,7 +15,10 @@ var packageTemplate = function(name) {
     "pivotal ui modularized"
   ],
   "author": "Pivotal",
-  "license": "MIT"
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "0.12"
+  }
 }`
 };
 module.exports = packageTemplate;

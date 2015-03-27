@@ -2,8 +2,8 @@ require('../spec_helper');
 
 describe('OverlayTrigger', function() {
   beforeEach(function() {
-    var Tooltip = require('../../src/components/tooltip').Tooltip;
-    var OverlayTrigger = require('../../src/components/overlay-trigger').OverlayTrigger;
+    var Tooltip = require('../../src/tooltip/tooltip').Tooltip;
+    var OverlayTrigger = require('../../src/overlay-trigger/overlay-trigger').OverlayTrigger;
     var tooltip = (<Tooltip><div className="tooltip-text">Hello World</div></Tooltip>);
     var launcher = (<div className="launcher">Hover For Tooltip</div>);
     var overlay = (

@@ -1,16 +1,16 @@
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
-gulp.task('spec', callback => runSequence('lint', 'spec-app', callback));
+gulp.task('spec', callback => runSequence('lint', 'jasmine-ci', callback));
 
 function testAssets(options = {}) {
   var webpackConfig = Object.assign(require('../config/webpack/config')('test'), options);
-  return gulp.src('spec/components/**/*_spec.js')
+  return gulp.src('spec/**/*_spec.js')
     .pipe(plugins.plumber())
     .pipe(plugins.webpack(webpackConfig));
 }
 
-gulp.task('spec-app', function() {
+gulp.task('jasmine-ci', function() {
   return testAssets({watch: false})
     .pipe(plugins.jasmineBrowser.specRunner({console: true}))
     .pipe(plugins.jasmineBrowser.phantomjs());

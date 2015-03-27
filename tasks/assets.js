@@ -11,14 +11,14 @@ const COPYRIGHT = '/*(c) Copyright 2015 Pivotal Software, Inc. All Rights Reserv
 
 var buildJavaScripts = function(options) {
   var webpackConfig = Object.assign({}, require('../config/webpack/config')(process.env.NODE_ENV), options);
-  var javascripts = glob.sync('./src/components/**/*.js');
-  var entries = javascripts.reduce(function(memo, filename) {
-    var name = path.basename(filename, '.js');
-    memo[name] = filename;
+  var componentDirectories = glob.sync('./src/*/');
+  var entries = componentDirectories.reduce(function(memo, directory) {
+    var name = path.basename(directory);
+    memo[name] = path.resolve(directory, `${name}.js`);
     return memo;
   }, {});
   webpackConfig.entry = entries;
-  return gulp.src('src/components/**/*.js')
+  return gulp.src('src/*/')
     .pipe(plugins.plumber())
     .pipe(plugins.webpack(webpackConfig))
     .pipe(plugins.header(COPYRIGHT))
@@ -27,7 +27,7 @@ var buildJavaScripts = function(options) {
 
 var createPackaging = function() {
   return through.obj(function(file, encoding, callback) {
-    var name = path.basename(file.path, '.js');
+    var name = path.basename(file.path);
     var outputDir = path.resolve(__dirname, '..', 'dist', name);
     mkdirp.sync(outputDir);
     fs.writeFileSync(path.resolve(outputDir, 'package.json'), packageTemplate(name));
@@ -41,7 +41,7 @@ gulp.task('assets-javascript', function() {
 
 gulp.task('build', function() {
   buildJavaScripts({watch: false});
-  return gulp.src('src/components/**/*.js')
+  return gulp.src('src/*/')
     .pipe(createPackaging())
 });
 
