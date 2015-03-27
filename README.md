@@ -12,6 +12,12 @@ To include pivotal-ui-react components in your own project:
     NB: You will need to be part of the Pivotal CF Github organization to download Pivotal UI. If you do not have access, email ask+cf@pivotal.io.
 1. The components have a umd wrapper and can be loaded using any of the standard methods. We test them using CommonJS style (`require('pivotal-ui-react.<component-name>')`) loaded with [Webpack](http://webpack.github.io/docs/).
 
+##Dependencies
+
+PUI-react uses the CommonJS pattern of requiring modules to use components.
+To load the components for use in a browser, you will need a build tool like Webpack or Browserify.
+We also require ReactJS. The specific version is listed in our peer dependencies.
+
 ##Development
 
 This library is intimately tied to Pivotal UI and development should be done on the Pivotal UI [styleguide](styleguide.pivotal.io).

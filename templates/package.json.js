@@ -18,6 +18,9 @@ var packageTemplate = function(name) {
   "license": "MIT",
   "peerDependencies": {
     "react": "0.12"
+  },
+  "dependencies": {
+    "react-bootstrap": "0.13.3"
   }
 }`
 };
