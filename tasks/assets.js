@@ -26,7 +26,21 @@ gulp.task('build', ['assets-javascript'], function() {
       var name = path.basename(file.path);
       var outputDir = path.resolve(__dirname, '..', 'dist', name);
       mkdirp.sync(outputDir);
-      fs.writeFileSync(path.resolve(outputDir, 'package.json'), packageTemplate(name));
+
+      var jsonContents = {};
+      try {
+        jsonContents = JSON.parse(fs.readFileSync(path.resolve(file.path, 'package.json'), 'utf8'));
+      } catch(e) {}
+
+      fs.writeFileSync(path.resolve(outputDir, 'package.json'), packageTemplate(
+        {
+          name: `pivotal-ui-react.${name}`,
+          description: `${name}`,
+          main: `${name}.js`
+        },
+        jsonContents
+      ));
+
       callback();
     }));
 });
