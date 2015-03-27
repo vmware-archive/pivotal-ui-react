@@ -1,4 +1,6 @@
 # pivotal-ui-react
+[![Build Status](https://travis-ci.org/pivotal-cf/pivotal-ui-react.svg)](https://travis-ci.org/pivotal-cf/pivotal-ui-react)
+
 React components built on top of a Bootstrap-based styleguide
 
 ##Usage
