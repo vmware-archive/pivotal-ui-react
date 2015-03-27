@@ -12,12 +12,11 @@ const COPYRIGHT = '/*(c) Copyright 2015 Pivotal Software, Inc. All Rights Reserv
 var buildJavaScripts = function(options) {
   var webpackConfig = Object.assign({}, require('../config/webpack/config')(process.env.NODE_ENV), options);
   var componentDirectories = glob.sync('./src/*/');
-  var entries = componentDirectories.reduce(function(memo, directory) {
+  webpackConfig.entry = componentDirectories.reduce(function(memo, directory) {
     var name = path.basename(directory);
     memo[name] = path.resolve(directory, `${name}.js`);
     return memo;
   }, {});
-  webpackConfig.entry = entries;
   return gulp.src('src/*/')
     .pipe(plugins.plumber())
     .pipe(plugins.webpack(webpackConfig))
