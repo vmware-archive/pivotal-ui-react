@@ -17,5 +17,6 @@
   "license": "MIT",
   "peerDependencies": {
     "react": "0.12"
-  }
+  },
+  "homepage": "http://styleguide.cfapps.io/react_beta.html#type_react"
 }
