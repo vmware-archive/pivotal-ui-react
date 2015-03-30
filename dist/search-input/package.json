@@ -1,0 +1,22 @@
+{
+  "name": "pivotal-ui-react.search-input",
+  "version": "0.0.1",
+  "description": "search-input",
+  "main": "search-input.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pivotal-cf/pivotal-ui-react.git"
+  },
+  "keywords": [
+    "bootstrap",
+    "react",
+    "pivotal ui",
+    "pivotal ui modularized"
+  ],
+  "author": "Pivotal",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "0.12"
+  },
+  "homepage": "http://styleguide.pivotal.io/react_beta.html#form_search_input_react"
+}
