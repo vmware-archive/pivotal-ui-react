@@ -1,0 +1,22 @@
+{
+  "name": "pivotal-ui-react.typography",
+  "version": "0.0.1",
+  "description": "typography",
+  "main": "typography.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pivotal-cf/pivotal-ui-react.git"
+  },
+  "keywords": [
+    "bootstrap",
+    "react",
+    "pivotal ui",
+    "pivotal ui modularized"
+  ],
+  "author": "Pivotal",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "0.12"
+  },
+  "homepage": "http://styleguide.cfapps.io/react_beta.html#type_react"
+}
