@@ -14,11 +14,12 @@ var packageTemplate = function(...overrides) {
       'pivotal ui',
       'pivotal ui modularized'
     ],
-    author: 'Pivotal',
+    author: 'Pivotal Software, Inc',
     license: 'MIT',
-    peerDependencies: {
-      react: '0.12'
-    }
+    bugs: {
+      url: "https://github.com/pivotal-cf/pivotal-ui-react/issues"
+    },
+    homepage: "https://github.com/pivotal-cf/pivotal-ui-react"
   }, ...overrides), null, 2);
 };
 

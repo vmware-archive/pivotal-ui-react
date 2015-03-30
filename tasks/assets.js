@@ -9,7 +9,9 @@ var through = require('through2');
 const COPYRIGHT = '/*(c) Copyright 2015 Pivotal Software, Inc. All Rights Reserved.*/\n';
 
 gulp.task('watch', function() {
-  gulp.watch('src/**/*.js', ['assets-javascript'])
+  gulp.watch('src/**/*.js', ['assets-javascript']);
+  gulp.watch('src/**/*.json', ['assets-package-json']);
+  gulp.watch('src/**/*.md', ['assets-readme']);
 });
 
 gulp.task('assets-javascript', function() {
@@ -20,16 +22,15 @@ gulp.task('assets-javascript', function() {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('build', ['assets-javascript'], function() {
-  return gulp.src('src/*/')
-    .pipe(through.obj(function(file, encoding, callback) {
-      var name = path.basename(file.path);
+gulp.task('assets-package-json', function(){
+  return gulp.src('src/*')
+    .pipe(plugins.plumber())
+    .pipe(through.obj(function(folder, encoding, callback) {
+      var name = path.basename(folder.path);
       var outputDir = path.resolve(__dirname, '..', 'dist', name);
-      mkdirp.sync(outputDir);
-
       var jsonContents = {};
       try {
-        jsonContents = JSON.parse(fs.readFileSync(path.resolve(file.path, 'package.json'), 'utf8'));
+        jsonContents = JSON.parse(fs.readFileSync(path.resolve(folder.path, 'package.json'), 'utf8'));
       } catch(e) {}
 
       fs.writeFileSync(path.resolve(outputDir, 'package.json'), packageTemplate(
@@ -42,9 +43,35 @@ gulp.task('build', ['assets-javascript'], function() {
       ));
 
       callback();
+    }))
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('assets-license', function(){
+  return gulp.src('src/*')
+    .pipe(plugins.plumber())
+    .pipe(through.obj(function(folder, encoding, callback) {
+      var name = path.basename(folder.path);
+      var outputLicense = path.resolve(__dirname, '..', 'dist', name, 'LICENSE');
+      var licenseFile = path.resolve(__dirname, '..', 'LICENSE');
+      fs.writeFileSync(outputLicense, fs.readFileSync(licenseFile, 'utf8'));
+
+      callback();
     }));
 });
 
+gulp.task('assets-readme', function(){
+  return gulp.src('src/**/*.md')
+    .pipe(plugins.plumber())
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('assets-packaging', ['assets-package-json', 'assets-readme', 'assets-license']);
+
+gulp.task('build', function() {
+  runSequence('assets-javascript', 'assets-packaging');
+});
+
 gulp.task('assets', function() {
-  runSequence('assets-javascript', 'watch');
+  runSequence('assets-javascript', 'assets-packaging', 'watch');
 });
