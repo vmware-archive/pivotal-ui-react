@@ -41,7 +41,8 @@
     "require-dir": "^0.3.0",
     "run-sequence": "^1.0.2",
     "through2": "^0.6.3",
-    "webpack": "^1.7.3"
+    "webpack": "^1.7.3",
+    "yargs": "^3.6.0"
   },
   "dependencies": {
     "babel": "^4.7.16",

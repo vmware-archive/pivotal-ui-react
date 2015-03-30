@@ -15,6 +15,28 @@ var packageTemplate = function(...overrides) {
       'pivotal ui modularized'
     ],
     author: 'Pivotal Software, Inc',
+    maintainers: [
+      {
+        name: "charleshansen",
+        email: "chansen87@gmail.com"
+      },
+      {
+        name: "stubbornella",
+        email: "nicole@stubbornella.org"
+      },
+      {
+        name: "ial-ahmed",
+        email: "issaq_al-ahmed@outlook.com"
+      },
+      {
+        name: "rdy",
+        email: "ryan.dy@gmail.com"
+      },
+      {
+        name: "vinsonchuong",
+        email: "vinsonchuong@gmail.com"
+      }
+    ],
     license: 'MIT',
     bugs: {
       url: "https://github.com/pivotal-cf/pivotal-ui-react/issues"
