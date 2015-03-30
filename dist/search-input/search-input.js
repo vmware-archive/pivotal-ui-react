@@ -16,17 +16,16 @@ var SearchInput = React.createClass({
 
   render: function render() {
     var _props = this.props;
-    var placeholder = _props.placeholder;
     var className = _props.className;
 
-    var other = _objectWithoutProperties(_props, ["placeholder", "className"]);
+    var other = _objectWithoutProperties(_props, ["className"]);
 
-    var inputClasses = ["form-control", className].filter(Boolean).join(" ");
+    var className = ["form-control", className].filter(Boolean).join(" ");
 
     return React.createElement(
       "div",
       { className: "form-group form-group-search" },
-      React.createElement("input", _extends({}, other, { type: "text", className: inputClasses, placeholder: placeholder })),
+      React.createElement("input", _extends({}, other, { type: "text", className: className })),
       React.createElement("i", { className: "fa fa-search" })
     );
   }

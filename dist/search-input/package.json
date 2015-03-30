@@ -13,10 +13,10 @@
     "pivotal ui",
     "pivotal ui modularized"
   ],
-  "author": "Pivotal Software, Inc",
+  "author": "Pivotal",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/pivotal-cf/pivotal-ui-react/issues"
+  "peerDependencies": {
+    "react": "0.12"
   },
-  "homepage": "https://github.com/pivotal-cf/pivotal-ui-react"
+  "homepage": "http://styleguide.pivotal.io/react_beta.html#form_search_input_react"
 }
