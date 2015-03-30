@@ -11,6 +11,6 @@ describe('tooltip', function() {
   });
 
   it('works', function() {
-    expect($('.tooltip-text')).toExist();
+    expect('.tooltip-text').toExist();
   });
 });
