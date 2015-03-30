@@ -4,7 +4,7 @@ module.exports = function(env = null) {
   return Object.assign({}, {
     module: {
       loaders: [
-        {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}
+        {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?optional[]=es7.objectRestSpread'}
       ]
     },
     output: {
