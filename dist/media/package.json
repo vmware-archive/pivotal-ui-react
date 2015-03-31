@@ -40,7 +40,7 @@
   "bugs": {
     "url": "https://github.com/pivotal-cf/pivotal-ui-react/issues"
   },
-  "homepage": "https://github.com/pivotal-cf/pivotal-ui-react",
+  "homepage": "http://styleguide.cfapps.io/react_beta.html#media_react",
   "dependencies": {
     "classnames": "^1.2.0"
   }
