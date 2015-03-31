@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "babel": "^4.7.16",
+    "classnames": "^1.2.0",
     "react": "0.12.1",
     "react-bootstrap": "^0.13.0"
   }
