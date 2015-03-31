@@ -1,4 +1,5 @@
 {
+  "homepage": "http://styleguide.cfapps.io/react_beta.html#media_react",
   "dependencies": {
     "classnames": "^1.2.0"
   }
