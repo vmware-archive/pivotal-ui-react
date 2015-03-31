@@ -1,6 +1,6 @@
 {
   "name": "pivotal-ui-react.typography",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "typography",
   "main": "typography.js",
   "repository": {
