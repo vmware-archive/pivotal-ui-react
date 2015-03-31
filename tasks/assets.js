@@ -60,9 +60,22 @@ gulp.task('assets-license', function(){
     }));
 });
 
+const README_FOOTER = `
+*****************************************
+
+This is a component of Pivotal UI React.
+
+[Styleguide](http://styleguide.pivotal.io/react_beta.html)
+[Github](https://github.com/pivotal-cf/pivotal-ui-react)
+
+All Pivotal UI Components require ReactJS (0.12.x)
+
+(c) Copyright 2015 Pivotal Software, Inc. All Rights Reserved.
+`;
 gulp.task('assets-readme', function(){
   return gulp.src('src/**/*.md')
     .pipe(plugins.plumber())
+    .pipe(plugins.footer(README_FOOTER))
     .pipe(gulp.dest('dist'));
 });
 
