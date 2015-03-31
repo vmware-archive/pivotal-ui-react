@@ -1,19 +1,33 @@
-var gulp = require('gulp');
-var plugins = require('gulp-load-plugins')();
 var argv = require('yargs').argv;
-var spawn = require('child_process').spawn;
+var gulp = require('gulp');
+var npm = require('npm')
 var path = require('path');
 
-
-
-gulp.task('publish', function(done){
-  if(!argv.component) {
+gulp.task('publish', function(){
+  var component = argv.component;
+  if(!component) {
     console.log('Usage: gulp publish --component=componentName');
     console.log('You must be logged in to npm');
-    done();
     return;
   }
-  console.log('Publishing', argv.component);
-  var packageDir = path.resolve(__dirname, '..', 'dist', argv.component);
-  spawn('npm', ['publish'], { cwd: packageDir, stdio: 'inherit' }).on('close', done);
+  console.log('Publishing', component);
+  var packageDir = path.resolve(__dirname, '..', 'dist', component);
+  npm.load({}, function(error) {
+    if (error) {
+      console.error(error);
+      return;
+    }
+
+    npm.commands.publish([packageDir], function(error) {
+      if (error) {
+        console.error(error);
+      }
+      var owners = ['rdy', 'charleshansen', 'stubbornella', 'ial-ahmed', 'vinsonchuong'];
+      (function next() {
+        if (owners.length) {
+          npm.commands.owner(['add', owners.pop(), `pivotal-ui-react.${component}`], next);
+        }
+      })();
+    });
+  });
 });
