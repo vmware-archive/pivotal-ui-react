@@ -15,7 +15,7 @@ var packageTemplate = function(...overrides) {
       'pivotal ui modularized'
     ],
     author: 'Pivotal Software, Inc',
-    maintainers: [
+    contributors: [
       {
         name: "charleshansen",
         email: "chansen87@gmail.com"
