@@ -26,7 +26,7 @@ describe('Media', function() {
   });
 
   describe('when left image src is set', function() {
-    describe('when left image src is set', function() {
+    describe('when default left image settings are used', function() {
       beforeEach(function() {
         var image = (<img src="http://placehold.it/20x20" alt="my fancy image description" height="50px" width="40px"/>);
         React.render((<Media leftImage={image}>fop</Media>), root);
@@ -95,7 +95,7 @@ describe('Media', function() {
       React.render((<Media leftImage={image} vAlign="bottom">fop</Media>), root);
     });
 
-    it('displays the media-middle class', function() {
+    it('displays the media-bottom class', function() {
       expect('.media .media-left').toHaveClass('media-bottom');
     });
   });
