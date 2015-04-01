@@ -22,8 +22,8 @@ var MyComponent = React.createClass({
 
 Property            | Values                                         | Description
 ------------------- | ---------------------------------------------- | --------------------------------------------------------------------------
-`leftImage`         | DOM Node                                       | Image, Video, or Audio to the left of the content
-`rightImage`        | DOM Node                                       | Image, Video, or Audio to the right of the content
+`leftImage`         | HTML                                           | Image, Video, or Audio to the left of the content
+`rightImage`        | HTML                                           | Image, Video, or Audio to the right of the content
 `bodyAlignment`     | top (default), "middle", "bottom"              | Vertical alignment of the body (used for large images with small content next to it, usually centered)
 `stackSize    `     | "xsmall", "small", "medium", "large"           | At what breakpoint should the media object stack
 `leftMediaSpacing`  | "small", "medium", "large" (default), "xlarge" | Spacing to the left of the media
