@@ -5,6 +5,7 @@ var ListItem = require('../../src/lists/lists').ListItem;
 var BreadcrumbList = require('../../src/lists/lists').BreadcrumbList;
 var StepList = require('../../src/lists/lists').StepList;
 var GroupList = require('../../src/lists/lists').GroupList;
+var GroupListInverse = require('../../src/lists/lists').GroupListInverse;
 var InlineList = require('../../src/lists/lists').InlineList;
 
 function itRenders(Element, props = {}) {
@@ -76,6 +77,15 @@ describe('lists', function() {
 
     it('adds the list-group class', function(){
       expect('#root ul').toHaveClass('list-group');
+      expect('#root ul li:first').toHaveClass('list-group-item');
+    });
+  });
+
+  describe('GroupListInverse', function(){
+    itRenders(GroupListInverse);
+
+    it('adds the list-group-inverse class', function(){
+      expect('#root ul').toHaveClass('list-group-inverse');
       expect('#root ul li:first').toHaveClass('list-group-item');
     });
   });

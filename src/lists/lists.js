@@ -1,6 +1,4 @@
-'use strict';
-
-var React = require('react/addons');
+var React = require('react');
 var classnames = require('classnames');
 
 var ListMixin = {
@@ -35,7 +33,6 @@ var UnorderedList = React.createClass({
       <ul className={classes}>{children}</ul>
     );
   }
-
 });
 
 var OrderedList = React.createClass({
@@ -61,7 +58,7 @@ var InlineList = React.createClass({
     var { spacing, children } = this.props;
     var classes = classnames({
       'list-inline': true,
-      'list-inline-divider': this.props.divider,
+      'list-inline-divider': this.props.divider
     });
     if (spacing) { classes += ' lh' + spacing; }
 
@@ -87,6 +84,26 @@ var GroupList = React.createClass({
     var classes = classnames({
       'list-group': true
     });
+    if (spacing) { classes += ' lv' + spacing; }
+
+    return (
+      <ul className={classes}>{this.renderChildren()}</ul>
+    );
+  }
+});
+
+var GroupListInverse = React.createClass({
+  mixins: [ListMixin],
+
+  renderChildren: function() {
+    return React.Children.map(this.props.children, c => React.addons.cloneWithProps(c, {className: 'list-group-item'}));
+  },
+
+  render: function() {
+    var {className, spacing} = this.props;
+    var classes = classnames({
+      'list-group-inverse': true
+    }, className);
     if (spacing) { classes += ' lv' + spacing; }
 
     return (
@@ -133,6 +150,7 @@ module.exports = {
   OrderedList,
   InlineList,
   GroupList,
+  GroupListInverse,
   StepList,
   BreadcrumbList
 };
