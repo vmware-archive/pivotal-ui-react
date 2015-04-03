@@ -1,7 +1,7 @@
 describe('Media', function() {
   var media, Media, Flag;
   beforeEach(function() {
-    media = require('../../src/media/media');
+    media = require('../../../components/media/media');
     Media = media.Media;
     Flag = media.Flag;
   });

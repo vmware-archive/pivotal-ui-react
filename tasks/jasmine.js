@@ -5,7 +5,7 @@ gulp.task('spec', callback => runSequence('lint', 'jasmine-ci', callback));
 
 function testAssets(options = {}) {
   var webpackConfig = Object.assign(require('../config/webpack/config')('test'), options);
-  return gulp.src('spec/**/*_spec.js')
+  return gulp.src('spec/components/**/*_spec.js')
     .pipe(plugins.plumber())
     .pipe(plugins.webpack(webpackConfig));
 }

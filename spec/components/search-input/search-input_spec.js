@@ -3,7 +3,7 @@ require('../spec_helper');
 describe('SearchInput', function() {
   var SearchInput;
   beforeEach(function() {
-    SearchInput = require('../../src/search-input/search-input').SearchInput;
+    SearchInput = require('../../../components/search-input/search-input').SearchInput;
     React.render((<SearchInput/>), root);
   });
 

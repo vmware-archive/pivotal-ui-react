@@ -1,12 +1,12 @@
 require('../spec_helper');
-var UnorderedList = require('../../src/lists/lists').UnorderedList;
-var OrderedList = require('../../src/lists/lists').OrderedList;
-var ListItem = require('../../src/lists/lists').ListItem;
-var BreadcrumbList = require('../../src/lists/lists').BreadcrumbList;
-var StepList = require('../../src/lists/lists').StepList;
-var GroupList = require('../../src/lists/lists').GroupList;
-var GroupListInverse = require('../../src/lists/lists').GroupListInverse;
-var InlineList = require('../../src/lists/lists').InlineList;
+var UnorderedList = require('../../../components/lists/lists').UnorderedList;
+var OrderedList = require('../../../components/lists/lists').OrderedList;
+var ListItem = require('../../../components/lists/lists').ListItem;
+var BreadcrumbList = require('../../../components/lists/lists').BreadcrumbList;
+var StepList = require('../../../components/lists/lists').StepList;
+var GroupList = require('../../../components/lists/lists').GroupList;
+var GroupListInverse = require('../../../components/lists/lists').GroupListInverse;
+var InlineList = require('../../../components/lists/lists').InlineList;
 
 function itRenders(Element, props = {}) {
   beforeEach(function() {

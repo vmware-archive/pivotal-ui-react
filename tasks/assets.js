@@ -9,13 +9,13 @@ var through = require('through2');
 const COPYRIGHT = '/*(c) Copyright 2015 Pivotal Software, Inc. All Rights Reserved.*/\n';
 
 gulp.task('watch', function() {
-  gulp.watch('src/**/*.js', ['assets-javascript']);
-  gulp.watch('src/**/*.json', ['assets-package-json']);
-  gulp.watch('src/**/*.md', ['assets-readme']);
+  gulp.watch('components/**/*.js', ['assets-javascript']);
+  gulp.watch('components/**/*.json', ['assets-package-json']);
+  gulp.watch('components/**/*.md', ['assets-readme']);
 });
 
 gulp.task('assets-javascript', function() {
-  return gulp.src('src/**/*.js')
+  return gulp.src('components/**/*.js')
     .pipe(plugins.plumber())
     .pipe(plugins.babel({optional: ['es7.objectRestSpread']}))
     .pipe(plugins.header(COPYRIGHT))
@@ -23,7 +23,7 @@ gulp.task('assets-javascript', function() {
 });
 
 gulp.task('assets-package-json', function(){
-  return gulp.src('src/*')
+  return gulp.src('components/*')
     .pipe(plugins.plumber())
     .pipe(through.obj(function(folder, encoding, callback) {
       var name = path.basename(folder.path);
@@ -48,7 +48,7 @@ gulp.task('assets-package-json', function(){
 });
 
 gulp.task('assets-license', function(){
-  return gulp.src('src/*')
+  return gulp.src('components/*')
     .pipe(plugins.plumber())
     .pipe(through.obj(function(folder, encoding, callback) {
       var name = path.basename(folder.path);
@@ -73,7 +73,7 @@ All Pivotal UI Components require ReactJS (0.12.x)
 (c) Copyright 2015 Pivotal Software, Inc. All Rights Reserved.
 `;
 gulp.task('assets-readme', function(){
-  return gulp.src('src/**/*.md')
+  return gulp.src('components/**/*.md')
     .pipe(plugins.plumber())
     .pipe(plugins.footer(README_FOOTER))
     .pipe(gulp.dest('dist'));

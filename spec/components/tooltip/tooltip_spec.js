@@ -2,7 +2,7 @@ require('../spec_helper');
 
 describe('tooltip', function() {
   beforeEach(function() {
-    var Tooltip = require('../../src/tooltip/tooltip').Tooltip;
+    var Tooltip = require('../../../components/tooltip/tooltip').Tooltip;
     React.render((<Tooltip><div className="tooltip-text">Hello World</div></Tooltip>), root);
   });
 

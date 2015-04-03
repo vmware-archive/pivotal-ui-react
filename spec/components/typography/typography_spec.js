@@ -3,7 +3,7 @@ require('../spec_helper');
 describe('Heading', function() {
   var typography, Heading;
   beforeEach(function() {
-    typography = require('../../src/typography/typography');
+    typography = require('../../../components/typography/typography');
     Heading = typography.Heading;
   });
 
