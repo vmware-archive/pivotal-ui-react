@@ -13,7 +13,7 @@ function d(name, dependencies) {
         memo[dependency.name] = dependency;
         return memo;
       }, {})
-    }
+    };
   }
   return JSON.parse(JSON.stringify(packageJson[name]));
 }
@@ -53,7 +53,7 @@ describe('dr-frankenstyle', function() {
           compare: function(actual, first, second) {
             var firstIndex = actual.indexOf(first);
             var secondIndex = actual.indexOf(second);
-            var pass =  firstIndex < secondIndex && (firstIndex !== -1) && (secondIndex !== -1);
+            var pass = firstIndex < secondIndex && (firstIndex !== -1) && (secondIndex !== -1);
             var message = pass ?
             'Expected ' + first + ' not to be before ' + second :
             'Expected ' + first + ' to be before ' + second;
