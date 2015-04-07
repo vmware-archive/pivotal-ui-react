@@ -1,0 +1,7 @@
+{
+  "homepage": "http://styleguide.cfapps.io/react_beta.html#grid_react",
+  "dependencies": {
+    "classnames": "^1.2.0",
+    "react-bootstrap": "0.13.3"
+  }
+}
