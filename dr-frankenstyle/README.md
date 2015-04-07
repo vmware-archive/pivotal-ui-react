@@ -1,4 +1,4 @@
-#Dr Frankenstyle
+# Dr Frankenstyle
 
 Dr Frankenstyle is a tool that resolves CSS dependencies between node packages. 
 
@@ -21,7 +21,7 @@ cascade order and without duplication. In the above exmaple, the files would be 
 1. Buttons
 1. Tooltips
 
-##Usage
+## Usage
 
 First, install Dr. Frankenstyle:
 
