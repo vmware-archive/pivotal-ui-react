@@ -1,7 +1,8 @@
 #Dr Frankenstyle
 
-Dr Frankenstyle is a tool that resolves CSS dependencies between node packages. If your app 
-needs both buttons and tooltips, install the button and tooltip node modules:
+Dr Frankenstyle is a tool that resolves CSS dependencies between node packages. 
+
+For example, if your app needs both buttons and tooltips, install the button and tooltip node modules:
 
 ```sh
 npm install pui-css-buttons --save
@@ -13,7 +14,7 @@ Both buttons and tooltips depend on `pui-css-typography`, which depends on `pui-
  
 Dr. Frankenstyle will read the dependency tree from `npm list` and find all of the required CSS files
 (indicated by packages with the `style` key). It will then create a single CSS file in the correct 
-cascade order and without duplication. In this case the files would be included in the following order:
+cascade order and without duplication. In the above exmaple, the files would be included in the following order:
 
 1. Bootstrap
 1. Typography
@@ -28,7 +29,7 @@ First, install Dr. Frankenstyle:
 npm install dr-frankenstyle
 ```
 
-Next, add a gulp task in your `gulpfile.js` to create the compiled CSS file.
+Next, add a `buildCss` gulp task in your `gulpfile.js`:
 
 ```js
 var gulp = require('gulp');
