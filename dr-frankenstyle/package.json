@@ -1,6 +1,6 @@
 {
   "name": "dr-frankenstyle",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Builds css from your dependencies",
   "main": "index.js",
   "repository": {
