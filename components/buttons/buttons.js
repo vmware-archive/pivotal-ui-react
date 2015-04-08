@@ -24,78 +24,37 @@ var UIButton = React.createClass({
   render: function () {
     var {block, href, large, type, children, ...others} = this.props;
 
-    var classes = classnames({
-      btn: true,
-      'btn-block': block,
-      'btn-lg': large
-    });
+    var classes = classnames(
+      'btn',
+      {
+        'btn-block': block,
+        'btn-lg': large
+      },
+      type ? 'btn-' + type : 'btn-default'
+    );
 
-    if (type) {
-      classes += ' btn-' + type;
-    } else {
-      classes += ' btn-default';
+    return href ?
+      (<a {...others} className={classes} href={href}>{children}</a>) :
+      (<button {...others} className={classes}>{children}</button>);
+  }
+});
+
+function createButton(propOverrides) {
+  return React.createClass({
+    mixins: [ButtonMixin],
+    render: function() {
+      return (<UIButton {...this.props} {...propOverrides} />);
     }
+  })
+}
 
-    if (href) {
-      return (
-        <a {...others} className={classes} href={href}>{children}</a>
-      );
-    } else {
-      return (
-        <button {...others} className={classes}>{children}</button>
-      );
-    }
-  }
-});
-
-var DefaultButton = React.createClass({
-  mixins: [ButtonMixin],
-  render: function render() {
-    return <UIButton {...this.props} type='default' />;
-  }
-});
-
-var DefaultAltButton = React.createClass({
-  mixins: [ButtonMixin],
-  render: function render() {
-    return <UIButton {...this.props} type='default-alt' />;
-  }
-});
-
-var PrimaryButton = React.createClass({
-  mixins: [ButtonMixin],
-  render: function render() {
-    return <UIButton {...this.props} type='primary' />;
-  }
-});
-
-var LowlightButton = React.createClass({
-  mixins: [ButtonMixin],
-  render: function render() {
-    return <UIButton {...this.props} type='lowlight' />;
-  }
-});
-
-var DangerButton = React.createClass({
-  mixins: [ButtonMixin],
-  render: function render() {
-    return <UIButton {...this.props} type='danger' />;
-  }
-});
-
-var HighlightButton = React.createClass({
-  mixins: [ButtonMixin],
-  render: function render() {
-    return <UIButton {...this.props} type='highlight' />;
-  }
-});
-
-var HighlightAltButton = React.createClass({
-  mixins: [ButtonMixin],
-  render: function render() {
-    return <UIButton {...this.props} type='highlight-alt' />;
-  }
-});
+var DefaultButton = createButton({type: 'default'});
+var DefaultAltButton = createButton({type: 'default-alt'});
+var PrimaryButton = createButton({type: 'primary'});
+var LowlightButton = createButton({type: 'lowlight'});
+var DangerButton = createButton({type: 'danger'});
+var HighlightButton = createButton({type: 'highlight'});
+var HighlightAltButton = createButton({type: 'highlight-alt'});
 
 module.exports = {
   UIButton: UIButton,
