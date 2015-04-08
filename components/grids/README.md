@@ -47,5 +47,5 @@ var MyComponent = React.createClass({
   }
 });
 
-For more detailed usage information, see the [style guide](http://styleguide.cfapps.io/react_beta.html#grid_react).
 ```
+For more detailed usage information, see the [style guide](http://styleguide.cfapps.io/react_beta.html#grid_react).
