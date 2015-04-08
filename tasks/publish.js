@@ -11,7 +11,10 @@ gulp.task('publish', function(){
     return;
   }
   console.log('Publishing', component);
+
   var packageDir = path.resolve(__dirname, '..', 'dist', component);
+  var packageJson = require(path.join(packageDir, 'package.json'));
+
   npm.load({}, function(error) {
     if (error) {
       console.error(error);
@@ -25,7 +28,7 @@ gulp.task('publish', function(){
       var owners = ['rdy', 'charleshansen', 'stubbornella', 'ial-ahmed', 'vinsonchuong'];
       (function next() {
         if (owners.length) {
-          npm.commands.owner(['add', owners.pop(), `pivotal-ui-react.${component}`], next);
+          npm.commands.owner(['add', owners.pop(), packageJson.name], next);
         }
       })();
     });
