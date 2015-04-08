@@ -35,7 +35,7 @@ gulp.task('assets-package-json', function(){
 
       fs.writeFileSync(path.resolve(outputDir, 'package.json'), packageTemplate(
         {
-          name: `pivotal-ui-react.${name}`,
+          name: `pui-react-${name}`,
           description: `${name}`,
           main: `${name}.js`
         },
