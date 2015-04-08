@@ -1,6 +1,6 @@
 var packageTemplate = function(...overrides) {
   return JSON.stringify(Object.assign({
-    name: 'pivotal-ui-react.COMPONENT',
+    name: 'pui-react-COMPONENT',
     version: '0.0.1',
     description: '',
     main: 'COMPONENT.js',
