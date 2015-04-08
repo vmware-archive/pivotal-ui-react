@@ -52,6 +52,7 @@
     "classnames": "^1.2.0",
     "jasmine": "^2.2.1",
     "react": "0.12.1",
+    "react-fa": "^3.0.0",
     "react-bootstrap": "^0.13.0"
   }
 }
