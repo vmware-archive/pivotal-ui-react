@@ -1,7 +1,8 @@
-var {Row, Col} = require('../../../components/grids/grids');
+require('../spec_helper');
 
 describe('Grid', function() {
   beforeEach(function() {
+    var {Row, Col} = require('../../../components/grids/grids');
     React.render(
       (
         <Row gutter="md">

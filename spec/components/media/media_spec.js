@@ -1,3 +1,5 @@
+require('../spec_helper');
+
 describe('Media', function() {
   var media, Media, Flag;
   beforeEach(function() {

@@ -1,7 +1,9 @@
-var {UIButton} = require('../../../components/buttons/buttons');
+require('../spec_helper');
 
 describe('UIButton', function() {
+  var UIButton;
   beforeEach(function() {
+    UIButton = require('../../../components/buttons/buttons').UIButton;
     React.render(<UIButton>Click here</UIButton>, root);
   });
 
