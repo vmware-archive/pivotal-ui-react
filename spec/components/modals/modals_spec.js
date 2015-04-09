@@ -56,6 +56,10 @@ describe('Modals', function() {
     var subject;
     beforeEach(function() {
       var MyModal = React.createClass({
+        propTypes: {
+          name: React.PropTypes.string
+        },
+
         _openModal: function(){
           this.refs.modal.open();
         },
@@ -67,16 +71,16 @@ describe('Modals', function() {
         render: function() {
           return (
             <div>
-              <DefaultButton id='openButton' onClick={this._openModal}>Open Modal</DefaultButton>
-              <Modal title='What a Header!' ref='modal'>
+              <DefaultButton id="openButton" onClick={this._openModal}>Open Modal</DefaultButton>
+              <Modal title="What a Header!" ref="modal">
                 <ModalBody>Text in a body</ModalBody>
                 <ModalFooter>
                   <p>Text in a footer</p>
-                  <DefaultButton id='closeButton' onClick={this._closeModal}>Close</DefaultButton>
+                  <DefaultButton id="closeButton" onClick={this._closeModal}>Close</DefaultButton>
                 </ModalFooter>
               </Modal>
             </div>
-          )
+          );
         }
       });
 
@@ -88,14 +92,14 @@ describe('Modals', function() {
       expect('#root .modal').not.toExist();
     });
 
-    describe("when mounting", function() {
-      it("removes the key up event listener", function() {
+    describe('when mounting', function() {
+      it('removes the key up event listener', function() {
         expect(document.body.addEventListener).toHaveBeenCalledWith('keyup', subject.refs.modal.onKeyUp, false);
       });
     });
 
-    describe("when unmounting", function() {
-      it("removes the key up event listener", function() {
+    describe('when unmounting', function() {
+      it('removes the key up event listener', function() {
         var onKeyUp = subject.refs.modal.onKeyUp;
         React.unmountComponentAtNode(root);
         expect(document.body.removeEventListener).toHaveBeenCalledWith('keyup', onKeyUp);
@@ -117,15 +121,15 @@ describe('Modals', function() {
         expect('.modal .modal-footer').toContainText('Text in a footer');
       });
 
-      describe("pressing any key", function() {
-        describe("for the escape key", function() {
+      describe('pressing any key', function() {
+        describe('for the escape key', function() {
           it('closes the modal', function() {
             document.body.addEventListener.calls.mostRecent().args[1]({keyCode: 27});
             expect(subject.refs.modal.state.isVisible).toBe(false);
           });
         });
 
-        describe("any other key", function() {
+        describe('any other key', function() {
           it('does not close the modal', function() {
             document.body.addEventListener.calls.mostRecent().args[1]({keyCode: 13});
             expect(subject.refs.modal.state.isVisible).toBe(true);
