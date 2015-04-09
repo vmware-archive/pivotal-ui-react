@@ -1,0 +1,7 @@
+{
+  "homepage": "http://styleguide.cfapps.io/react_beta.html#modal_react",
+  "dependencies": {
+    "pui-css-modals": "*"
+  },
+  "version": "0.0.1"
+}
