@@ -13,7 +13,7 @@ $.fn.simulate = function(eventName, ...args) {
     throw new Error(`jQuery Simulate has an empty selection for '${this.selector}'`);
   }
   $.each(this, function() {
-    if (['mouseOver', 'mouseOut'].includes(eventName)) {
+    if (['mouseOver', 'mouseOut', 'click'].includes(eventName)) {
       React.addons.TestUtils.SimulateNative[eventName](this, ...args);
     } else {
       React.addons.TestUtils.Simulate[eventName](this, ...args);
