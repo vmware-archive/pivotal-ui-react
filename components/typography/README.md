@@ -1,4 +1,4 @@
-# pivotal-ui-react.typography
+# Pui-react-typography
 
 Typography provides pre-styled headings.
 
@@ -6,7 +6,7 @@ There are three types of headings, depending on your product, `Default`, `Altern
 
 Sample Usage
 ```js
-var H2 = require('pivotal-ui-react.typography').DefaultH2;
+var H2 = require('pui-react-typography').DefaultH2;
 var MyComponent = React.createClass({
   render: function() {
     return (<H2>I'm somewhat important</H2>);

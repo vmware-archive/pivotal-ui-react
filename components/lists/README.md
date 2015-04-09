@@ -1,10 +1,10 @@
-#pivotal-ui-react.lists
+# Pui-react-lists
 
 Lists to display data in various ways.
 
 Sample Usage
 ```js
-var lists = require('pivotal-ui-react.lists');
+var lists = require('pui-react-lists');
 var UnorderedList = lists.UnorderedList;
 var ListItem = lists.ListItem;
 

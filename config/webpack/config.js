@@ -7,14 +7,6 @@ module.exports = function(env = null) {
         {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?optional[]=es7.objectRestSpread'}
       ]
     },
-    output: {
-      library: 'pivotal-ui-react.[name]',
-      libraryTarget:  'umd',
-      path: path.resolve(__dirname, '..', '..', 'dist'),
-      filename: '[name]/[name].js',
-      chunkFilename: '[name]/[name].js',
-      pathinfo: true
-    },
     externals: {
       react: true
     }

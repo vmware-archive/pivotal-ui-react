@@ -1,4 +1,4 @@
-# pivotal-ui-react.media
+# Pui-react-media
 
 Displays a media object (images, video, or audio) to the left or right of a block of content.
 
@@ -9,8 +9,8 @@ You'll need to pass in an image, most likely an [Image](http://styleguide.cfapps
 ```js
 var MyComponent = React.createClass({
   render: function() {
-    var Media = require('pivotal-ui-react.media').Media;
-    var Image = require('pivotal-ui-react.image').Image;
+    var Media = require('pui-react-media').Media;
+    var Image = require('pui-react-image').Image;
     
     var image = (<Image src="http://placehold.it/50x50"/>);
     return (<Media leftImage={image}>content</Media>);

@@ -2,5 +2,6 @@
   "dependencies": {
     "react-bootstrap": "0.13.3"
   },
-  "homepage": "http://styleguide.cfapps.io/react_beta.html#tooltips_react"
+  "homepage": "http://styleguide.cfapps.io/react_beta.html#tooltips_react",
+  "version": "0.0.2"
 }

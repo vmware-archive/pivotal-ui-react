@@ -3,5 +3,6 @@
   "dependencies": {
     "classnames": "^1.2.0",
     "react-bootstrap": "0.13.3"
-  }
+  },
+  "version": "0.0.2"
 }

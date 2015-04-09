@@ -1,10 +1,10 @@
-#Pivotal-ui-react.grids
+# Pui-react-grids
 
 A tool used for displaying content in a grid system.
 
 Sample Usage
 ```js
-var grids = require('pivotal-ui-react.grids');
+var grids = require('pui-react-grids');
 var Row = grids.Row;
 var Col = grids.Col;
 

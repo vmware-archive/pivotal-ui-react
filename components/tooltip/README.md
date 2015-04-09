@@ -1,4 +1,4 @@
-# pivotal-ui-react.tooltip
+# Pui-react-tooltip
 
 Tooltips are used to display extra information on hover. 
 They are designed to be used with `OverlayTrigger`.
@@ -12,8 +12,8 @@ Tooltips are placed using the `placement` property on `OverlayTrigger`, "left", 
 
 Sample Usage
 ```js
-var OverlayTrigger = require('pivotal-ui-react.overlay-trigger').OverlayTrigger;
-var Tooltip = require('pivotal-ui-react.tooltip').Tooltip;
+var OverlayTrigger = require('pui-react-overlay-trigger').OverlayTrigger;
+var Tooltip = require('pui-react-tooltip').Tooltip;
 
 var MyComponent = React.createClass({
   render: function() {

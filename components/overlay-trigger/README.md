@@ -1,4 +1,4 @@
-#pivotal-ui-react.overlay-trigger
+# Pui-react-overlay-trigger
 
 OverlayTriggers are used to display extra information on hover. 
 
@@ -10,7 +10,7 @@ Overlays are placed using the `placement` property on `OverlayTrigger`, "left", 
 
 Sample Usage
 ```js
-var OverlayTrigger = require('pivotal-ui-react.overlay-trigger').OverlayTrigger;
+var OverlayTrigger = require('pui-react-overlay-trigger').OverlayTrigger;
 
 var MyComponent = React.createClass({
   render: function() {

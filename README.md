@@ -3,22 +3,22 @@
 
 React components built on top of a Bootstrap-based styleguide
 
-##Usage
+## Usage
 
 To include pivotal-ui-react components in your own project:
 
-1. `npm install pivotal-ui-react.<component-name>`
+1. `npm install pui-react-<component-name>`
 1. Include the CSS manually from the [pivotal-ui git repo](https://github.com/pivotal-cf/pivotal-ui/releases). Yes, we know this is sub-optimal, we're working on it. ;)
     NB: You will need to be part of the Pivotal CF Github organization to download Pivotal UI. If you do not have access, email ask+cf@pivotal.io.
-1. The components have a umd wrapper and can be loaded using any of the standard methods. We test them using CommonJS style (`require('pivotal-ui-react.<component-name>')`) loaded with [Webpack](http://webpack.github.io/docs/).
+1. The components have a umd wrapper and can be loaded using any of the standard methods. We test them using CommonJS style (`require('pui-react-<component-name>')`) loaded with [Webpack](http://webpack.github.io/docs/).
 
-##Dependencies
+## Dependencies
 
 PUI-react uses the CommonJS pattern of requiring modules to use components.
 To load the components for use in a browser, you will need a build tool like Webpack or Browserify.
 We also require ReactJS. The specific version is listed in our peer dependencies.
 
-##Development
+## Development
 
 This library is intimately tied to Pivotal UI and development should be done on the Pivotal UI [styleguide](styleguide.pivotal.io).
 
