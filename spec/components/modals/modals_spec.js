@@ -2,45 +2,11 @@ describe('Modals', function() {
   var Modal,
     ModalBody,
     ModalFooter,
-    DefaultButton,
-    ReactCSSTransitionGroupChild;
+    DefaultButton;
 
   beforeEach(function() {
     spyOn(document.body, 'addEventListener');
     spyOn(document.body, 'removeEventListener');
-
-    ReactCSSTransitionGroupChild = require('react/lib/ReactCSSTransitionGroupChild');
-
-    spyOn(ReactCSSTransitionGroupChild.type.prototype, 'queueClass').and.callFake(function(className) {
-      this.classNameQueue.push(className);
-      this.flushClassNameQueue();
-    });
-
-    spyOn(ReactCSSTransitionGroupChild.type.prototype, 'transition').and.callFake(function(animationType, finishCallback) {
-      var node = this.getDOMNode();
-      var className = this.props.name + '-' + animationType;
-      var activeClassName = className + '-active';
-
-      var endListener = function(e) {
-        if (e && e.target !== node) {
-          return;
-        }
-
-        CSSCore.removeClass(node, className);
-        CSSCore.removeClass(node, activeClassName);
-
-        // Usually this optional callback is used for informing an owner of
-        // a leave animation and telling it to remove the child.
-        finishCallback && finishCallback();
-      };
-
-      endListener({target: node});
-
-      CSSCore.addClass(node, className);
-
-      // Need to do this to actually trigger a transition.
-      this.queueClass(activeClassName);
-    });
 
     Modal = require('../../../components/modals/modals').Modal;
     ModalBody = require('../../../components/modals/modals').ModalBody;
