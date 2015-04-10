@@ -1,0 +1,7 @@
+{
+  "homepage": "http://styleguide.pivotal.io/react_beta.html#form_radio_input_react",
+  "version": "0.0.1",
+  "dependencies": {
+    "pui-css-forms": "^0"
+  }
+}
