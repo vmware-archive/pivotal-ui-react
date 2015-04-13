@@ -1,7 +1,8 @@
 {
   "dependencies": {
-    "react-bootstrap": "0.13.3"
+    "react-bootstrap": "0.13.3",
+    "pui-css-tooltips": "*"
   },
   "homepage": "http://styleguide.cfapps.io/react_beta.html#tooltips_react",
-  "version": "0.0.2"
+  "version": "0.0.3"
 }
