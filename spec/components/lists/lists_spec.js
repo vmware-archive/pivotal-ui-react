@@ -1,34 +1,34 @@
 require('../spec_helper');
 
-var UnorderedList = require('../../../components/lists/lists').UnorderedList;
-var OrderedList = require('../../../components/lists/lists').OrderedList;
-var ListItem = require('../../../components/lists/lists').ListItem;
-var BreadcrumbList = require('../../../components/lists/lists').BreadcrumbList;
-var StepList = require('../../../components/lists/lists').StepList;
-var GroupList = require('../../../components/lists/lists').GroupList;
-var GroupListInverse = require('../../../components/lists/lists').GroupListInverse;
-var InlineList = require('../../../components/lists/lists').InlineList;
-
-function itRenders(Element, props = {}) {
-  beforeEach(function() {
-    React.render(
-      <Element {...props}>
-        <ListItem>A</ListItem>
-        <ListItem>B</ListItem>
-      </Element>,
-    root);
-  });
-
-  afterEach(function() {
-    React.unmountComponentAtNode(root);
-  });
-
-  it('renders', function() {
-    expect('#root li').toHaveLength(2);
-  });
-}
-
 describe('lists', function() {
+  var UnorderedList = require('../../../components/lists/lists').UnorderedList;
+  var OrderedList = require('../../../components/lists/lists').OrderedList;
+  var ListItem = require('../../../components/lists/lists').ListItem;
+  var BreadcrumbList = require('../../../components/lists/lists').BreadcrumbList;
+  var StepList = require('../../../components/lists/lists').StepList;
+  var GroupList = require('../../../components/lists/lists').GroupList;
+  var GroupListInverse = require('../../../components/lists/lists').GroupListInverse;
+  var InlineList = require('../../../components/lists/lists').InlineList;
+
+  function itRenders(Element, props = {}) {
+    beforeEach(function() {
+      React.render(
+        <Element {...props}>
+          <ListItem>A</ListItem>
+          <ListItem>B</ListItem>
+        </Element>,
+        root);
+    });
+
+    afterEach(function() {
+      React.unmountComponentAtNode(root);
+    });
+
+    it('renders', function() {
+      expect('#root li').toHaveLength(2);
+    });
+  }
+
   describe('UnorderedList', function() {
     itRenders(UnorderedList);
 
