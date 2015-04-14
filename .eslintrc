@@ -33,8 +33,6 @@
   "globals": {
   },
 
-  "parser": "babel-eslint",
-
   "plugins": [
     "react"
   ],
