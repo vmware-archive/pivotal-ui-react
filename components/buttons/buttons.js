@@ -5,8 +5,7 @@ var ButtonMixin = {
   propTypes: {
     block: React.PropTypes.bool,
     href: React.PropTypes.string,
-    large: React.PropTypes.bool,
-    type: React.PropTypes.oneOf([
+    kind: React.PropTypes.oneOf([
       'default',
       'default-alt',
       'primary',
@@ -14,7 +13,8 @@ var ButtonMixin = {
       'danger',
       'highlight',
       'highlight-alt'
-    ])
+    ]),
+    large: React.PropTypes.bool
   }
 };
 
@@ -22,7 +22,7 @@ var UIButton = React.createClass({
   mixins: [ButtonMixin],
 
   render: function () {
-    var {block, href, large, type, children, ...others} = this.props;
+    var {block, href, large, kind, children, ...others} = this.props;
 
     var classes = classnames(
       'btn',
@@ -30,7 +30,7 @@ var UIButton = React.createClass({
         'btn-block': block,
         'btn-lg': large
       },
-      type ? 'btn-' + type : 'btn-default'
+      kind ? 'btn-' + kind : 'btn-default'
     );
 
     return href ?
@@ -45,16 +45,16 @@ function createButton(propOverrides) {
     render: function() {
       return (<UIButton {...this.props} {...propOverrides} />);
     }
-  })
+  });
 }
 
-var DefaultButton = createButton({type: 'default'});
-var DefaultAltButton = createButton({type: 'default-alt'});
-var PrimaryButton = createButton({type: 'primary'});
-var LowlightButton = createButton({type: 'lowlight'});
-var DangerButton = createButton({type: 'danger'});
-var HighlightButton = createButton({type: 'highlight'});
-var HighlightAltButton = createButton({type: 'highlight-alt'});
+var DefaultButton = createButton({kind: 'default'});
+var DefaultAltButton = createButton({kind: 'default-alt'});
+var PrimaryButton = createButton({kind: 'primary'});
+var LowlightButton = createButton({kind: 'lowlight'});
+var DangerButton = createButton({kind: 'danger'});
+var HighlightButton = createButton({kind: 'highlight'});
+var HighlightAltButton = createButton({kind: 'highlight-alt'});
 
 module.exports = {
   UIButton: UIButton,

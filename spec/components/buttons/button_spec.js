@@ -26,9 +26,9 @@ describe('UIButton', function() {
     });
   });
 
-  describe('when type attribute is set', function() {
+  describe('when kind attribute is set', function() {
     beforeEach(function(){
-      React.render(<UIButton type="danger">Click here</UIButton>, root);
+      React.render(<UIButton kind="danger">Click here</UIButton>, root);
     });
 
     it('adds the type class to the button', function() {
@@ -69,6 +69,27 @@ describe('UIButton', function() {
     it('passes through the data-attributes', function() {
       expect('#root button.btn').toHaveAttr('data-click', 'myFunction');
       expect('#root button.btn').toHaveAttr('data-foo', 'bar');
+    });
+  });
+
+  [
+    {name: 'DefaultAltButton', btnClass: 'btn-default-alt'},
+    {name: 'PrimaryButton', btnClass: 'btn-primary'},
+    {name: 'LowlightButton', btnClass: 'btn-lowlight'},
+    {name: 'DangerButton', btnClass: 'btn-danger'},
+    {name: 'HighlightButton', btnClass: 'btn-highlight'},
+    {name: 'HighlightAltButton', btnClass: 'btn-highlight-alt'}
+  ].forEach(function({name, btnClass}) {
+    describe(name, function() {
+      beforeEach(function() {
+        var Button = require('../../../components/buttons/buttons')[name];
+        React.render(<Button>Click here</Button>, root);
+      });
+
+      it('renders with the btn-primary class', function() {
+        expect('button.btn').not.toHaveClass('btn-default');
+        expect('button.btn').toHaveClass(btnClass);
+      });
     });
   });
 });
