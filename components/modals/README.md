@@ -6,7 +6,7 @@ We provide 3 components that can be used to assemble modals:
 1. UI.ModalBody
 1. UI.ModalFooter
 
-##Opening and closing the modal with callbacks
+## Opening and closing the modal with callbacks
 
 Modals will be closed by default. To open the modal,
 add a ref property to the modal (i.e. ref='myModal').
