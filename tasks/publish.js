@@ -25,7 +25,7 @@ gulp.task('publish', function(){
       if (error) {
         console.error(error);
       }
-      var owners = ['rdy', 'charleshansen', 'stubbornella', 'ial-ahmed', 'vinsonchuong'];
+      var owners = ['rdy', 'charleshansen', 'stubbornella', 'vinsonchuong'];
       (function next() {
         if (owners.length) {
           npm.commands.owner(['add', owners.pop(), packageJson.name], next);
