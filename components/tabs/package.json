@@ -1,0 +1,6 @@
+{
+  "homepage": "http://styleguide.pivotal.io/react_beta.html#tabs_react",
+  "dependencies": {
+    "react-bootstrap": "^0.13.3"
+  }
+}

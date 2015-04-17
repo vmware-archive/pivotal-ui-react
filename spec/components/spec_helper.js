@@ -24,5 +24,6 @@ $.fn.simulate = function(eventName, ...args) {
 
 
 beforeEach(function() {
+  jasmine.clock().install();
   $('body').find('#root').remove().end().append('<main id="root"/>');
 });
