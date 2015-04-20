@@ -1,45 +1,43 @@
 var React = require('react');
+var types = React.PropTypes;
 var classnames = require('classnames');
 
-var DividerMixin = {
+var DividerProps = {
   propTypes: {
-    className: React.PropTypes.string,
-    inverse: React.PropTypes.bool,
-    size: React.PropTypes.oneOf(['large'])
+    inverse: types.bool,
+    size: types.oneOf(['large'])
   }
 };
 
 var Divider = React.createClass({
-  mixins: [DividerMixin],
+  mixins: [DividerProps],
 
   render() {
     var {inverse, size, className, ...others} = this.props;
-
-    var typeName = "divider";
-    if (!inverse) {
-      typeName += "-alternate";
-    }
-    if (size === "large") {
-      typeName += "-2";
-    } else {
-      typeName += "-1";
-    }
-
-    return (
-      <hr {...others} className={classnames(className, typeName)} />
+    var classes = classnames(
+      className,
+      {
+        'divider-1': inverse && size !== 'large',
+        'divider-2': inverse && size === 'large',
+        'divider-alternate-1': !inverse && size !== 'large',
+        'divider-alternate-2': !inverse && size === 'large'
+      }
     );
+
+    return <hr {...others} className={classes}/>;
   }
 });
 
-
-var InverseDivider = React.createClass({
-  mixins: [DividerMixin],
-  render() {
-    return <Divider {...this.props} inverse={true} />;
-  }
-});
+function defDivider(props) {
+  return React.createClass({
+    mixins: [DividerProps],
+    render() {
+      return <Divider {...props} {...this.props} />;
+    }
+  });
+}
 
 module.exports = {
   Divider,
-  InverseDivider
+  InverseDivider: defDivider({inverse: true})
 };

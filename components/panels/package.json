@@ -1,6 +1,8 @@
 {
+  "version": "0.0.2",
   "homepage": "http://styleguide.pivotal.io/react_beta.html#panel_react",
   "dependencies": {
-    "classname": "^1.2.0"
+    "classname": "^1.2.0",
+    "pui-css-panels": "^0"
   }
 }

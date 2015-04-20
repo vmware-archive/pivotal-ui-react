@@ -1,27 +1,24 @@
 var React = require('react');
+var types = React.PropTypes;
 var BsPanel = require('react-bootstrap/Panel');
 var classnames = require('classnames');
 
-var CollapseMixin = {
+var CollapseProps = {
   propTypes: {
-    divider: React.PropTypes.bool,
-    header: React.PropTypes.node.isRequired
+    divider: types.bool,
+    header: types.node.isRequired
   }
 };
 
 var BaseCollapse = React.createClass({
-  mixins: [CollapseMixin],
+  mixins: [CollapseProps],
 
   getInitialState() {
-    return {
-      expanded: false
-    };
+    return {expanded: false};
   },
 
   handleSelect() {
-    this.setState({
-      expanded: !this.state.expanded
-    });
+    this.setState({expanded: !this.state.expanded});
   },
 
   render() {
@@ -37,7 +34,7 @@ var BaseCollapse = React.createClass({
 });
 
 var Collapse = React.createClass({
-  mixins: [CollapseMixin],
+  mixins: [CollapseProps],
 
   render() {
     var {header, ...others} = this.props;
@@ -59,7 +56,7 @@ var Collapse = React.createClass({
 });
 
 var AltCollapse = React.createClass({
-  mixins: [CollapseMixin],
+  mixins: [CollapseProps],
 
   render() {
     var {header, ...others} = this.props;
@@ -80,8 +77,4 @@ var AltCollapse = React.createClass({
   }
 });
 
-module.exports = {
-  BaseCollapse,
-  Collapse,
-  AltCollapse
-};
+module.exports = {BaseCollapse, Collapse, AltCollapse};

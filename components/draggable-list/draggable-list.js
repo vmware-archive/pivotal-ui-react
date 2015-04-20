@@ -1,8 +1,7 @@
 var React = require('react/addons');
+var types = React.PropTypes;
 var classnames = require('classnames');
 var move = require('./move_helper');
-
-var types = React.PropTypes;
 
 var HoverMixin = {
   getInitialState() {
@@ -125,21 +124,16 @@ var DraggableListItem = React.createClass({
     return (
       <li {...props} aria-dropeffect="move">
         <div className="draggable-item-content">
-          <div className='draggable-grip mhl' aria-grabbed={grabbed} role='button'>
-            <i className='fa fa-ellipsis-v mrs'/>
-            <i className='fa fa-ellipsis-v'/>
-            <span className='sr-only'>Drag to reorder</span>
+          <div className="draggable-grip mhl" aria-grabbed={grabbed} role="button">
+            <i className="fa fa-ellipsis-v mrs"/>
+            <i className="fa fa-ellipsis-v"/>
+            <span className="sr-only">Drag to reorder</span>
           </div>
-          <span>
-            {this.props.children}
-          </span>
+          <span>{this.props.children}</span>
         </div>
       </li>
     );
   }
 });
 
-module.exports = {
-  DraggableList,
-  DraggableListItem
-};
+module.exports = {DraggableList, DraggableListItem};

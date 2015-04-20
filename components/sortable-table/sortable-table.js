@@ -12,23 +12,16 @@ var TableHeader = React.createClass({
   },
 
   render() {
-    var sortClass;
+    var {children, sortable, sortState: {column, order}, name} = this.props;
 
-    if (this.props.sortable) {
-      if (this.props.sortState.column !== this.props.name) {
-        sortClass = 'sortable sorted-none';
-      } else if (this.props.sortState.order === 'asc') {
-        sortClass = 'sortable sorted-asc';
-      } else {
-        sortClass = 'sortable sorted-desc';
-      }
-    }
+    var sortClass = classnames({
+      'sortable': sortable,
+      'sorted-none': sortable && column !== name,
+      'sorted-asc': sortable && column === name && order === 'asc',
+      'sorted-desc': sortable && column === name && order === 'desc'
+    });
 
-    return (
-      <th className={sortClass} onClick={this.handleClick}>
-        {this.props.children}
-      </th>
-    );
+    return <th className={sortClass} onClick={this.handleClick}>{children}</th>;
   }
 });
 
@@ -39,13 +32,10 @@ const ALIGNMENT = {
 };
 var TableRow = React.createClass({
   render() {
-    var tableCells = this.props.columnNames.map(function(columnName, columnIndex) {
-      var columnAlignment = this.props.alignment[columnIndex];
-      return (
-        <td key={columnName} className={classnames(ALIGNMENT[columnAlignment])}>{this.props.data[columnName]}</td>
-      );
-    }, this);
-
+    var {data, alignment, columnNames} = this.props;
+    var tableCells = columnNames.map(function(name, i) {
+      return <td key={name} className={classnames(ALIGNMENT[alignment[i]])}>{data[name]}</td>;
+    });
     return <tr>{tableCells}</tr>;
   }
 });
@@ -63,23 +53,21 @@ var SortableTable = React.createClass({
   },
 
   getInitialState() {
-    var column = this.props.columns[0].name;
+    var {columns, data} = this.props;
+    var column = columns[0].name;
     return {
       sort: {
         column,
         order: 'asc'
       },
-
-      data: sortBy(this.props.data, column)
+      data: sortBy(data, column)
     };
   },
 
   sortData(header) {
-    var {column: oldSortColumn, order: oldSortOrder} = this.state.sort;
-    var oldData = this.state.data;
+    var {data: oldData, sort: {column: oldSortColumn, order: oldSortOrder}} = this.state;
     var newSortColumn = header.props.name;
-    var newData;
-    var newSortOrder;
+    var newData, newSortOrder;
 
     if (oldSortColumn !== newSortColumn) {
       newSortOrder = 'asc';
@@ -109,8 +97,8 @@ var SortableTable = React.createClass({
       );
     }, this);
 
-    var rows = this.state.data.map(function(datum, datumIndex) {
-      return (<TableRow data={datum} key={datumIndex} columnNames={columns.map(c => c.name)} alignment={columns.map(c => c.align)} />);
+    var rows = this.state.data.map(function(datum, i) {
+      return (<TableRow data={datum} key={i} columnNames={columns.map(c => c.name)} alignment={columns.map(c => c.align)}/>);
     });
 
     return (

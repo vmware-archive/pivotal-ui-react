@@ -1,39 +1,25 @@
 var React = require('react/addons');
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+var types = React.PropTypes;
+var {CSSTransitionGroup} = React.addons;
 
 var ExpanderContent = React.createClass({
   propTypes: {
-    expanded: React.PropTypes.bool
+    expanded: types.bool
   },
 
   getInitialState() {
-    return {
-      expanded: this.props.expanded
-    };
+    return {expanded: this.props.expanded};
   },
 
   toggle() {
-    this.setState({
-      expanded: !this.state.expanded
-    });
+    this.setState({expanded: !this.state.expanded});
   },
 
   render() {
-    var content;
-
-    if (this.state.expanded) {
-      content = (
-        <div key="expandedContent" style={{overflow: 'hidden'}}>
-          {this.props.children}
-        </div>
-      );
-    }
-
-    return (
-      <ReactCSSTransitionGroup transitionName="expander">
-        {content}
-      </ReactCSSTransitionGroup>
-    );
+    var content = this.state.expanded ?
+      <div key="expandedContent" style={{overflow: 'hidden'}}>{this.props.children}</div> :
+      null;
+    return <CSSTransitionGroup transitionName="expander">{content}</CSSTransitionGroup>;
   }
 });
 
@@ -43,9 +29,7 @@ var ExpanderTrigger = React.createClass({
   },
 
   setTarget(target) {
-    this.setState({
-      target: target
-    });
+    this.setState({target});
   },
 
   toggleExpander () {
@@ -57,11 +41,7 @@ var ExpanderTrigger = React.createClass({
   },
 
   render() {
-    return (
-      <div onClick={this.toggleExpander}>
-        {this.props.children}
-      </div>
-    );
+    return <div onClick={this.toggleExpander}>{this.props.children}</div>;
   }
 });
 

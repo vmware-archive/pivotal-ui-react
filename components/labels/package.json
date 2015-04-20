@@ -1,3 +1,7 @@
 {
-  "homepage": "http://styleguide.pivotal.io/react_beta.html#label_react"
+  "version": "0.0.2",
+  "homepage": "http://styleguide.pivotal.io/react_beta.html#label_react",
+  "dependencies": {
+    "pui-css-labels": "^0"
+  }
 }

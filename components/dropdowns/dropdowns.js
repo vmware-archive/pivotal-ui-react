@@ -1,73 +1,22 @@
 var React = require('react');
-
 var Dropdown = require('react-bootstrap/DropdownButton');
-var DropdownItem = require('react-bootstrap/MenuItem');
 
-var LinkDropdown = React.createClass({
-  render() {
-    return (
-      <Dropdown {...this.props} bsStyle="link"/>
-    );
-  }
-});
-
-var DefaultAltDropdown = React.createClass({
-  render() {
-    return (
-      <Dropdown {...this.props} className="btn-default-alt"/>
-    );
-  }
-});
-
-var PrimaryDropdown = React.createClass({
-  render() {
-    return (
-      <Dropdown {...this.props} bsStyle="primary"/>
-    );
-  }
-});
-
-var LowlightDropdown = React.createClass({
-  render() {
-    return (
-      <Dropdown {...this.props} className="btn-lowlight"/>
-    );
-  }
-});
-
-var DangerDropdown = React.createClass({
-  render() {
-    return (
-      <Dropdown {...this.props} bsStyle="danger"/>
-    );
-  }
-});
-
-var HighlightDropdown = React.createClass({
-  render() {
-    return (
-      <Dropdown {...this.props} className="btn-highlight"/>
-    );
-  }
-});
-
-var HighlightAltDropdown = React.createClass({
-  render() {
-    return (
-      <Dropdown {...this.props} className="btn-highlight-alt"/>
-    );
-  }
-});
-
+function defDropdown(props) {
+  return React.createClass({
+    render() {
+      return <Dropdown {...props} {...this.props}/>
+    }
+  });
+}
 
 module.exports = {
   Dropdown,
-  LinkDropdown,
-  DefaultAltDropdown,
-  PrimaryDropdown,
-  LowlightDropdown,
-  DangerDropdown,
-  HighlightDropdown,
-  HighlightAltDropdown,
-  DropdownItem
+  DropdownItem: require('react-bootstrap/MenuItem'),
+  LinkDropdown: defDropdown({bsStyle: 'link'}),
+  DefaultAltDropdown: defDropdown({className: 'btn-default-alt'}),
+  PrimaryDropdown: defDropdown({bsStyle: 'primary'}),
+  LowlightDropdown: defDropdown({className: 'btn-lowlight'}),
+  DangerDropdown: defDropdown({bsStyle: 'danger'}),
+  HighlightDropdown: defDropdown({className: 'btn-highlight'}),
+  HighlightAltDropdown: defDropdown({className: 'btn-highlight-alt'})
 };

@@ -14,12 +14,12 @@ describe('Panel', function() {
     expect('.panel .panel-body').toContainText('Sup');
   });
 
-  describe('when a type is provided', function() {
+  describe('when a kind is provided', function() {
     beforeEach(function() {
-      React.render(<Panel type="panel-basic">Sup</Panel>, root);
+      React.render(<Panel kind="panel-basic">Sup</Panel>, root);
     });
 
-    it('sets the type as a class on the panel', function() {
+    it('sets the kind as a class on the panel', function() {
       expect('.panel').toHaveClass('panel-basic');
     });
   });

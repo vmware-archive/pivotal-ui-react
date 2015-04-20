@@ -1,6 +1,5 @@
 var classnames = require('classnames');
 var React = require('react');
-
 var types = React.PropTypes;
 
 var Image = React.createClass({
@@ -12,13 +11,10 @@ var Image = React.createClass({
 
   render() {
     var {responsive, href, src, children, className, ...other} = this.props;
-    var image = (
-      <img {...other} src={src} className={classnames({'img-responsive': responsive}, className)}>
-        {children}
-      </img>
-    );
+    var classes = classnames({'img-responsive': responsive}, className);
 
-    return (href) ? <a href={href}>{image}</a> : image;
+    var image = <img {...other} src={src} className={classes}>{children}</img>;
+    return href ? <a {...{href}}>{image}</a> : image;
   }
 });
 

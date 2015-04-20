@@ -1,20 +1,20 @@
 var React = require('react');
+var types = React.PropTypes;
 var BsAlert = require('react-bootstrap/Alert');
 var {Media} = require('pui-react-media');
 
-var AlertMixin = {
+var AlertProps = {
   propTypes: {
-    dismissable: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.func
+    dismissable: types.oneOfType([
+      types.bool,
+      types.func
     ]),
-    withIcon: React.PropTypes.bool
+    withIcon: types.bool
   }
 };
 
-
 var Alert = React.createClass({
-  mixins: [AlertMixin],
+  mixins: [AlertProps],
 
   getInitialState() {
     return {
@@ -45,49 +45,18 @@ var Alert = React.createClass({
   }
 });
 
-var SuccessAlert = React.createClass({
-  mixins: [AlertMixin],
-
-  render() {
-    return (
-      <Alert bsStyle="success" alertIcon="fa-check-circle" {...this.props} />
-    );
-  }
-});
-
-var InfoAlert = React.createClass({
-  mixins: [AlertMixin],
-
-  render() {
-    return (
-      <Alert bsStyle="info" alertIcon="fa-info-circle" {...this.props } />
-    );
-  }
-});
-
-var WarningAlert = React.createClass({
-  mixins: [AlertMixin],
-
-  render() {
-    return (
-      <Alert bsStyle="warning" alertIcon="fa-exclamation-triangle" {...this.props } />
-    );
-  }
-});
-
-var ErrorAlert = React.createClass({
-  mixins: [AlertMixin],
-
-  render() {
-    return (
-      <Alert bsStyle="danger" alertIcon="fa-exclamation-triangle" {...this.props } />
-    );
-  }
-});
+function defAlert(props) {
+  return React.createClass({
+    mixins: [AlertProps],
+    render() {
+      return <Alert {...props} {...this.props} />
+    }
+  });
+}
 
 module.exports = {
-  SuccessAlert,
-  InfoAlert,
-  WarningAlert,
-  ErrorAlert
+  SuccessAlert: defAlert({bsStyle: 'success', alertIcon: 'fa-check-circle'}),
+  InfoAlert: defAlert({bsStyle: 'info', alertIcon: 'fa-info-circle'}),
+  WarningAlert: defAlert({bsStyle: 'warning', alertIcon: 'fa-exclamation-triangle'}),
+  ErrorAlert: defAlert({bsStyle: 'danger', alertIcon: 'fa-exclamation-triangle'})
 };

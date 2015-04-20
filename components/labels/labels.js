@@ -2,11 +2,7 @@ var React = require('react');
 
 var Label = React.createClass({
   render() {
-    return (
-      <span className="label label-primary">
-        {this.props.children}
-      </span>
-    );
+    return <span className="label label-primary">{this.props.children}</span>;
   }
 });
 

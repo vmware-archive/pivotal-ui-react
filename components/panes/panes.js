@@ -1,10 +1,11 @@
 var React = require('react');
+var types = React.PropTypes;
 var classnames = require('classnames');
 
 var BasePane = React.createClass({
   propTypes: {
-    outerClass: React.PropTypes.string,
-    innerClass: React.PropTypes.string
+    outerClass: types.string,
+    innerClass: types.string
   },
 
   render() {
@@ -18,13 +19,10 @@ var BasePane = React.createClass({
 });
 
 var Pane = React.createClass({
-  render: function () {
+  render() {
     var {className, ...other} = this.props;
-    return <BasePane {...other} outerClass={className} />;
+    return <BasePane {...other} outerClass={className}/>;
   }
 });
 
-module.exports = {
-  BasePane,
-  Pane
-};
+module.exports = {BasePane, Pane};

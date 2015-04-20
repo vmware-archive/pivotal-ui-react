@@ -1,6 +1,5 @@
-// TODO: Change Type to Kind
-
 var React = require('react');
+var types = React.PropTypes;
 var classnames = require('classnames');
 
 var paddingTypes = [
@@ -8,127 +7,84 @@ var paddingTypes = [
   for (loc of ['l', 'r', 't', 'b', 'h', 'v', 'a'])
   for (size of ['s', 'm', 'l', 'xl', 'xxl', 'xxxl', 'xxxxl'])
   `${type}${loc}${size}`
-  ];
-
-var PanelMixin = {
+];
+var PanelTypes = {
   propTypes: {
-    type: React.PropTypes.string,
+    type: types.string,
     padding: function(props, propName, componentName) {
-      if (props.padding) {
-        props.padding.split(' ').forEach(function(pad) {
-          if (!paddingTypes.includes(pad)) {
-            return new Error('Invalid padding type used in ' + componentName);
-          }
-        });
+      if (props.padding && !props.padding.split(' ').every(pad => paddingTypes.includes(pad))) {
+        return new Error(`Invalid padding type used in ${componentName}`);
       }
     },
-    scrollable: React.PropTypes.oneOfType([
-      React.PropTypes.bool,
-      React.PropTypes.number
+    scrollable: types.oneOfType([
+      types.bool,
+      types.number
     ])
   }
 };
 
 var Panel = React.createClass({
-  mixins: [PanelMixin],
+  mixins: [PanelTypes],
 
   propTypes: {
-    type: React.PropTypes.string,
-    title: React.PropTypes.string
+    kind: types.string,
+    title: types.string
   },
 
   render() {
-    var {type, className, padding, scrollable, children, ...other} = this.props;
+    var {kind, className, padding, scrollable, children, ...other} = this.props;
 
-    var classes = classnames('panel', type, className, {'panel-scrollable': scrollable}),
-      bodyClasses = classnames('panel-body', padding);
+    var classes = classnames('panel', kind, className, {'panel-scrollable': scrollable});
+    var bodyClasses = classnames('panel-body', padding);
 
-    var title;
-    if (this.props.title && this.props.title.length > 0) {
-      title = (
-        <div className="panel-header">
-          <h5 className="panel-title-alt">{ this.props.title }</h5>
-        </div>
-      );
-    } else {
-      title = '';
-    }
+    var title = this.props.title ? (
+      <div className="panel-header">
+        <h5 className="panel-title-alt">{this.props.title}</h5>
+      </div>
+    ) : null;
 
     return (
       <div {...other} className={classes} style={scrollable && {maxHeight: scrollable}}>
         {title}
-        <div className={bodyClasses}>
-          {children}
-        </div>
+        <div className={bodyClasses}>{children}</div>
       </div>
     );
   }
 });
 
-var SimplePanel = React.createClass({
-  mixins: [PanelMixin],
-  render() {
-    return <Panel {...this.props} type="panel-simple"/>;
-  }
-});
-
-var BasicPanel = React.createClass({
-  mixins: [PanelMixin],
-  render() {
-    return <Panel {...this.props} type="panel-basic"/>;
-  }
-});
-
-var BasicPanelAlt = React.createClass({
-  mixins: [PanelMixin],
-  render() {
-    return <Panel {...this.props} type="panel-basic-alt"/>;
-  }
-});
-
-var ClickablePanel = React.createClass({
-  mixins: [PanelMixin],
-  render() {
-    return <Panel {...this.props} type="panel-clickable"/>;
-  }
-});
-
-var ClickableAltPanel = React.createClass({
-  mixins: [PanelMixin],
-  render() {
-    return <Panel {...this.props} type="panel-clickable-alt"/>;
-  }
-});
-
 var ShadowPanel = React.createClass({
-  mixins: [PanelMixin],
+  mixins: [PanelTypes],
 
   propTypes: {
-    shadowLevel: React.PropTypes.oneOf([1, 2, 3, 4])
+    shadowLevel: types.oneOf([1, 2, 3, 4])
+  },
+
+  getDefaultProps() {
+    return {shadowLevel: 3};
   },
 
   render() {
     var {shadowLevel, ...other} = this.props;
-    shadowLevel = shadowLevel || 3;
-
-    return <Panel {...other} type={`panel-shadow-${shadowLevel}`}/>;
+    return <Panel {...other} kind={`panel-shadow-${shadowLevel}`}/>;
   }
 });
 
-var HighlightPanel = React.createClass({
-  mixins: [PanelMixin],
-  render() {
-    return <Panel {...this.props} type="panel-highlight"/>;
-  }
-});
+function defPanel(props) {
+  return React.createClass({
+    mixins: [PanelTypes],
+    render() {
+      return <Panel {...props} {...this.props}/>;
+    }
+  });
+}
 
 module.exports = {
   Panel,
-  ClickablePanel,
-  ClickableAltPanel,
-  SimplePanel,
-  BasicPanel,
-  BasicPanelAlt,
-  ShadowPanel,
-  HighlightPanel
+  SimplePanel: defPanel({kind: 'panel-simple'}),
+  BasicPanel: defPanel({kind: 'panel-basic'}),
+  BasicPanelAlt: defPanel({kind: 'panel-basic-alt'}),
+  ClickablePanel: defPanel({kind: 'panel-clickable'}),
+  ClickableAltPanel: defPanel({kind: 'panel-clickable-alt'}),
+  HighlightPanel: defPanel({kind: 'panel-highlight'}),
+  ShadowPanel
 };
