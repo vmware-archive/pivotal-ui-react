@@ -17,7 +17,7 @@ gulp.task('watch', function() {
 gulp.task('assets-javascript', function() {
   return gulp.src('components/**/*.js')
     .pipe(plugins.plumber())
-    .pipe(plugins.babel({optional: ['es7.objectRestSpread']}))
+    .pipe(plugins.babel({stage: 0}))
     .pipe(plugins.header(COPYRIGHT))
     .pipe(gulp.dest('dist'));
 });
