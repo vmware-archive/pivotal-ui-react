@@ -2,7 +2,7 @@
   "version": "0.0.2",
   "homepage": "http://styleguide.pivotal.io/react_beta.html#dropdown_react",
   "dependencies": {
-    "react-bootstrap": "^0.13.3",
+    "react-bootstrap": "^0.20.3",
     "pui-css-dropdowns": "^0"
   }
 }

@@ -4,7 +4,7 @@ var {TestUtils} = React.addons;
 describe('BaseCollapse', function() {
   var BsPanel, BaseCollapse, subject, bsPanel;
   beforeEach(function() {
-    BsPanel = require('react-bootstrap/Panel');
+    BsPanel = require('react-bootstrap/lib/Panel');
     BaseCollapse = require('../../../components/collapse/collapse').BaseCollapse;
 
     subject = React.render((
@@ -100,9 +100,6 @@ describe('BaseCollapse behavior', function() {
 
   beforeEach(function() {
     BaseCollapse = require('../../../components/collapse/collapse').BaseCollapse;
-
-    jasmine.clock().install();
-
     React.render((
       <BaseCollapse header="This is my heading">
         Collapse contents!
@@ -111,23 +108,41 @@ describe('BaseCollapse behavior', function() {
   });
 
   afterEach(function() {
-    jasmine.clock().uninstall();
     React.unmountComponentAtNode(root);
   });
 
-  it('allows for expanding and collapsing of contents', function() {
-    jasmine.clock().tick(500);
-    expect($('.panel-collapse').height()).toEqual(0);
-    expect('#root a').toHaveText('This is my heading');
-    $('#root a').simulate('click');
+  describe('when expanding', function() {
+    var preventDefaultSpy;
+    beforeEach(function() {
+      preventDefaultSpy = jasmine.createSpy('preventDefaut');
+      expect('.panel-collapse').toHaveAttr('aria-expanded', 'false');
+      expect('#root a').toHaveText('This is my heading');
+      $('#root a').simulate('click', {preventDefault: preventDefaultSpy});
+    });
 
-    jasmine.clock().tick(500);
-    expect($('.panel-collapse').height()).toBeGreaterThan(0);
-    expect('#root a').toHaveText('This is my heading');
-    $('#root a').simulate('click');
+    it('expands', function() {
+      expect('.panel-collapse').toHaveAttr('aria-expanded', 'true');
+      expect('#root a').toHaveText('This is my heading');
+    });
 
-    jasmine.clock().tick(500);
-    expect($('.panel-collapse').height()).toEqual(0);
-    expect('#root a').toHaveText('This is my heading');
+    it('prevents default on the click, onSelect behavior in react-bootstrap has changed', function() {
+      expect(preventDefaultSpy).toHaveBeenCalled();
+    });
+
+    describe('when collapsing', function() {
+      beforeEach(function() {
+        preventDefaultSpy.calls.reset();
+        $('#root a').simulate('click', {preventDefault: preventDefaultSpy});
+      });
+
+      it('collapses', function(){
+        expect('.panel-collapse').toHaveAttr('aria-expanded', 'false');
+        expect('#root a').toHaveText('This is my heading');
+      });
+
+      it('prevents default on the click', function() {
+        expect(preventDefaultSpy).toHaveBeenCalled();
+      });
+    });
   });
 });

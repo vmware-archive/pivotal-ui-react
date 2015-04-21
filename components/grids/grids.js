@@ -1,8 +1,8 @@
 var classnames = require('classnames');
 var React = require('react');
 
-var BootstrapRow = require('react-bootstrap/Row');
-var Col = require('react-bootstrap/Col');
+var BootstrapRow = require('react-bootstrap/lib/Row');
+var Col = require('react-bootstrap/lib/Col');
 
 var Row = React.createClass({
   propTypes: {

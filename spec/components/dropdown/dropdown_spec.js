@@ -42,7 +42,7 @@ describe('Dropdowns', function() {
     });
 
     it('creates a dropdown', function() {
-      expect('button.dropdown-toggle.btn.btn-default-alt').toContainText('Dropping');
+      expect('.btn-default-alt button.dropdown-toggle.btn').toContainText('Dropping');
     });
   });
 
@@ -72,7 +72,7 @@ describe('Dropdowns', function() {
     });
 
     it('creates a dropdown', function() {
-      expect('button.dropdown-toggle.btn.btn-lowlight').toContainText('Dropping');
+      expect('.btn-lowlight button.dropdown-toggle.btn').toContainText('Dropping');
     });
   });
 
@@ -102,7 +102,7 @@ describe('Dropdowns', function() {
     });
 
     it('creates a dropdown', function() {
-      expect('button.dropdown-toggle.btn.btn-highlight').toContainText('Dropping');
+      expect('.btn-highlight button.dropdown-toggle.btn').toContainText('Dropping');
     });
   });
 
@@ -117,7 +117,7 @@ describe('Dropdowns', function() {
     });
 
     it('creates a dropdown', function() {
-      expect('button.dropdown-toggle.btn.btn-highlight-alt').toContainText('Dropping');
+      expect('.btn-highlight-alt button.dropdown-toggle.btn').toContainText('Dropping');
     });
   });
 });

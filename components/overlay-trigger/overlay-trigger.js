@@ -1,4 +1,4 @@
-var BootstrapOverlayTrigger = require('react-bootstrap/OverlayTrigger');
+var BootstrapOverlayTrigger = require('react-bootstrap/lib/OverlayTrigger');
 
 var OverlayTrigger = BootstrapOverlayTrigger;
 

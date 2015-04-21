@@ -12,7 +12,7 @@ var PanelTypes = {
   propTypes: {
     type: types.string,
     padding: function(props, propName, componentName) {
-      if (props.padding && !props.padding.split(' ').every(pad => paddingTypes.includes(pad))) {
+      if (props.padding && !props.padding.split(' ').every(pad => paddingTypes.indexOf(pad) !== -1)) {
         return new Error(`Invalid padding type used in ${componentName}`);
       }
     },

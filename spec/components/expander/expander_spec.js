@@ -2,7 +2,7 @@ require('../spec_helper');
 
 describe('ExpanderContent', function() {
   beforeEach(function() {
-    spyOn(React.addons.CSSTransitionGroup.type.prototype, 'render').and.callFake(function() {
+    spyOn(React.addons.CSSTransitionGroup.prototype, 'render').and.callFake(function() {
       return React.createElement('div', this.props);
     });
   });

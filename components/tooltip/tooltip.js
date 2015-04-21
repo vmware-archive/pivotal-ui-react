@@ -1,4 +1,4 @@
-var BootstrapTooltip = require('react-bootstrap/Tooltip');
+var BootstrapTooltip = require('react-bootstrap/lib/Tooltip');
 
 var Tooltip = BootstrapTooltip;
 

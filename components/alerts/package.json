@@ -2,7 +2,7 @@
   "version": "0.0.2",
   "homepage": "http://styleguide.pivotal.io/react_beta.html#alerts_react",
   "dependencies": {
-    "react-bootstrap": "^0.13.3",
+    "react-bootstrap": "^0.20.3",
     "pui-css-alerts": "^0",
     "pui-css-iconography": "^0",
     "pui-react-media": "^0"

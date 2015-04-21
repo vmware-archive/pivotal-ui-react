@@ -1,5 +1,5 @@
 var React = require('react');
-var Dropdown = require('react-bootstrap/DropdownButton');
+var Dropdown = require('react-bootstrap/lib/DropdownButton');
 
 function defDropdown(props) {
   return React.createClass({
@@ -11,7 +11,7 @@ function defDropdown(props) {
 
 module.exports = {
   Dropdown,
-  DropdownItem: require('react-bootstrap/MenuItem'),
+  DropdownItem: require('react-bootstrap/lib/MenuItem'),
   LinkDropdown: defDropdown({bsStyle: 'link'}),
   DefaultAltDropdown: defDropdown({className: 'btn-default-alt'}),
   PrimaryDropdown: defDropdown({bsStyle: 'primary'}),
