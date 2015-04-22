@@ -10,6 +10,29 @@ var CollapseProps = {
   }
 };
 
+/**
+ * @component BaseCollapse
+ * @description An unstyled accordion for showing and hiding content
+ *
+ * @property header {Element} HTML to use as the accordion toggle
+ * @property divider {Boolean} Adds a line between the accordion header and accordion body
+ *
+ * @example ```js
+ * var BaseCollapse = require('pui-react-collapse').BaseCollapse;
+ * var MyComponent = React.createClass({
+ *   render() {
+ *     return (
+ *       <BaseCollapse header="Click to Toggle">
+ *         <p>Toggleable content</p>
+ *       </BaseCollapse>
+ *     );
+ *   }
+ * });
+ * ```
+ *
+ * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#collapse_react)
+ * @see [Pivotal UI CSS](http://styleguide.pivotal.io/objects.html#accordion)
+ */
 var BaseCollapse = React.createClass({
   mixins: [CollapseProps],
 
@@ -33,6 +56,29 @@ var BaseCollapse = React.createClass({
   }
 });
 
+/**
+ * @component Collapse
+ * @description An accordion with an arrow icon in the toggle
+ *
+ * @property header {Element} HTML to use as the accordion toggle
+ * @property divider {Boolean} Adds a line between the accordion header and accordion body
+ *
+ * @example ```js
+ * var BaseCollapse = require('pui-react-collapse').BaseCollapse;
+ * var MyComponent = React.createClass({
+ *   render() {
+ *     return (
+ *       <BaseCollapse header="Click to Toggle">
+ *         <p>Toggleable content</p>
+ *       </BaseCollapse>
+ *     );
+ *   }
+ * });
+ * ```
+ *
+ * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#collapse_react)
+ * @see [Pivotal UI CSS](http://styleguide.pivotal.io/objects.html#accordion)
+ */
 var Collapse = React.createClass({
   mixins: [CollapseProps],
 
@@ -55,6 +101,29 @@ var Collapse = React.createClass({
   }
 });
 
+/**
+ * @component AltCollapse
+ * @description An accordion with a plus/minus icon in the toggle
+ *
+ * @property header {Element} HTML to use as the accordion toggle
+ * @property divider {Boolean} Adds a line between the accordion header and accordion body
+ *
+ * @example ```js
+ * var BaseCollapse = require('pui-react-collapse').BaseCollapse;
+ * var MyComponent = React.createClass({
+ *   render() {
+ *     return (
+ *       <BaseCollapse header="Click to Toggle">
+ *         <p>Toggleable content</p>
+ *       </BaseCollapse>
+ *     );
+ *   }
+ * });
+ * ```
+ *
+ * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#collapse_react)
+ * @see [Pivotal UI CSS](http://styleguide.pivotal.io/objects.html#accordion)
+ */
 var AltCollapse = React.createClass({
   mixins: [CollapseProps],
 

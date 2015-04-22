@@ -40,6 +40,37 @@ var TableRow = React.createClass({
   }
 });
 
+/**
+ * @component SortableTable
+ * @description A table that can be sorted by column
+ *
+ * @property columns {Array<Object>} A list of column configuration parameters:
+ *   `name` is the `data` key associated with the column;
+ *   `title` is the header text for the column;
+ *   `sortable` (defaults to false) indicates whether the table can be sorted by this column; and
+ *   `align` (defaults to left) sets the text alignment for cells in this column
+ * @property data {Array<Object>} The data to be displayed in the table
+ * @property classes {Array<String>} Class names to add to the table
+ *
+ * @example ```js
+ * var SortableTable = require('pui-react-sortable-table').SortableTable;
+ * var MyComponent = React.createClass({
+ *   render() {
+ *     var columns = [
+ *       {name: 'c1', title: 'Column 1', sortable: true},
+ *       {name: 'c2', title: 'Column 2'}
+ *     ];
+ *     var data = [
+ *       {c1: 'yes', c2: 'foo'},
+ *       {c1: 'no', c2: 'bar'}
+ *     ];
+ *     return <SortableTable data={data} columns={columns} classes={['my-table']}/>;
+ *   }
+ * });
+ * ```
+ *
+ * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#table_sortable_react)
+ */
 var SortableTable = React.createClass({
   propTypes: {
     classes: types.arrayOf(types.string),

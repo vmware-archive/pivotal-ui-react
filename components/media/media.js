@@ -1,36 +1,51 @@
 var React = require('react');
 var classnames = require('classnames');
 
+const shortSizes = {xsmall: 'xs', small: 'sm', medium: 'md', large: 'lg', xlarge: 'xl'};
+const charSizes = {small: 's', medium: 'm', large: 'l', xlarge: 'xl'};
+
 var MediaObject = React.createClass({
   render() {
-    var className = classnames({
-      'media-left': this.props.horizontalAlignment === 'left',
-      'media-right': this.props.horizontalAlignment === 'right',
-      'media-middle': this.props.vAlign === 'middle',
-      'media-bottom': this.props.vAlign === 'bottom',
-
-      'prs': this.props.leftMediaSpacing === 'small',
-      'prm': this.props.leftMediaSpacing === 'medium',
-      'prl': this.props.leftMediaSpacing === 'large',
-      'prxl': this.props.leftMediaSpacing === 'xlarge',
-      'pls': this.props.rightMediaSpacing === 'small',
-      'plm': this.props.rightMediaSpacing === 'medium',
-      'pll': this.props.rightMediaSpacing === 'large',
-      'plxl': this.props.rightMediaSpacing === 'xlarge'
-    });
-
-    return (
-      <div className={className}>
-        {this.props.children}
-      </div>
+    var {horizontalAlignment, vAlign, leftMediaSpacing, rightMediaSpacing, children} = this.props;
+    var className = classnames(
+      horizontalAlignment && `media-${horizontalAlignment}`,
+      vAlign && `media-${vAlign}`,
+      leftMediaSpacing && `pr${charSizes[leftMediaSpacing]}`,
+      rightMediaSpacing && `pr${charSizes[rightMediaSpacing]}`
     );
+    return <div className={className}>{children}</div>;
   }
 });
 
+/**
+ * @component Media
+ * @description Displays a media object (images, video, or audio) to the left or right of a block of content
+ *
+ * @property leftImage {Element} `<Image>`, `<Video>`, or `<Audio>` to be shown left of the content
+ * @property rightImage {Element} `<Image>`, `<Video>`, or `<Audio>` to be shown right of the content
+ * @property vAlign {String} One of `middle` or `bottom`--if given, re-positions the content vertically
+ * @property stackSize {String} One of `xsmall`, `small`, `medium`, or `large`--if given, sets the breakpoint at which the media object stacks
+ * @property leftMediaSpacing {String} One of `small`, `medium`, `large` (default), or `xlarge`--sets the amount of space between the left media and the content
+ * @property rightMediaSpacing {String} One of `small`, `medium`, `large` (default), or `xlarge`--sets the amount of space between the right media and the content
+ *
+ * @example ```js
+ * var Media = require('pui-react-media').Media;
+ * var Image = require('pui-react-image').Image;
+ * var MyComponent = React.createClass({
+ *   render() {
+ *     var image = <Image src="http://placehold.it/50x50"/>;
+ *     return (<Media leftImage={image} leftMediaSpacing="small">Content</Media>);
+ *   }
+ * });
+ * ```
+ *
+ * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#media_react)
+ * @see [Pivotal UI CSS](http://styleguide.pivotal.io/layout.html#media)
+ */
 var Media = React.createClass({
   propTypes: {
     hasImages: function(props) {
-      if(!props['leftImage'] && !props['rightImage']) {
+      if (!props['leftImage'] && !props['rightImage']) {
         return new Error('The media component must have at least one image');
       }
     },
@@ -41,67 +56,44 @@ var Media = React.createClass({
   },
 
   render() {
-    var {leftImage, leftMediaSpacing, rightImage, rightMediaSpacing, stackSize,
-      vAlign, children, ...other} = this.props;
-    var leftMedia, rightMedia;
+    var {className, leftImage, leftMediaSpacing, rightImage, rightMediaSpacing, stackSize, vAlign, children, ...other} = this.props;
 
-    var classes = classnames(
-      'media',
-      {
-        'media-stackable-xs': stackSize === 'xsmall',
-        'media-stackable-sm': stackSize === 'small',
-        'media-stackable-md': stackSize === 'medium',
-        'media-stackable-lg': stackSize === 'large'
-      },
-      this.props.className
-    );
+    var classes = classnames('media', stackSize && `media-stackable-${shortSizes[stackSize]}`, className);
+    var bodyClasses = classnames('media-body', vAlign && `media-${vAlign}`);
 
-
-    var bodyClasses = classnames(
-      'media-body',
-      {
-        'media-middle': vAlign === 'middle',
-        'media-bottom': vAlign === 'bottom'
-      }
-    );
-
-    if (leftImage) {
-      leftMedia = (
-        <MediaObject
-          horizontalAlignment='left'
-          vAlign={vAlign}
-          leftMediaSpacing={leftMediaSpacing}>
-          {leftImage}
-        </MediaObject>
-      );
-    }
-
-    if (rightImage) {
-      rightMedia = (
-        <MediaObject
-          horizontalAlignment='right'
-          vAlign={vAlign}
-          rightMediaSpacing={rightMediaSpacing}>
-          {rightImage}
-        </MediaObject>
-      );
-    }
+    var leftMedia = leftImage ?
+      <MediaObject horizontalAlignment="left" {...{vAlign, leftMediaSpacing}}>{leftImage}</MediaObject> :
+      null;
+    var rightMedia = rightImage ?
+      <MediaObject horizontalAlignment="right" {...{vAlign, rightMediaSpacing}}>{rightImage}</MediaObject> :
+      null;
 
     return (
       <div {...other} className={classes}>
         {leftMedia}
-        <div className={bodyClasses}>
-          {children}
-        </div>
+        <div className={bodyClasses}>{children}</div>
         {rightMedia}
       </div>
     );
   }
 });
 
+/**
+ * @component Flag
+ * @description Displays a media object (images, video, or audio) to the left or right of a block of content with vertical centering
+ *
+ * @property leftImage {Element} `<Image>`, `<Video>`, or `<Audio>` to be shown left of the content
+ * @property rightImage {Element} `<Image>`, `<Video>`, or `<Audio>` to be shown right of the content
+ * @property stackSize {String} One of `xsmall`, `small`, `medium`, or `large`--if given, sets the breakpoint at which the media object stacks
+ * @property leftMediaSpacing {String} One of `small`, `medium`, `large` (default), or `xlarge`--sets the amount of space between the left media and the content
+ * @property rightMediaSpacing {String} One of `small`, `medium`, `large` (default), or `xlarge`--sets the amount of space between the right media and the content
+ *
+ * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#media_react)
+ * @see [Pivotal UI CSS](http://styleguide.pivotal.io/layout.html#media)
+ */
 var Flag = React.createClass({
   render() {
-    return (<Media {...this.props} vAlign='middle'/>);
+    return <Media {...this.props} vAlign="middle"/>;
   }
 });
 

@@ -23,6 +23,24 @@ var PanelTypes = {
   }
 };
 
+/**
+ * @component Panel
+ * @description A container for grouping related content
+ *
+ * @property title {String} Text to show as the header of the `<Panel>`
+ *
+ * @example ```js
+ * var Panel = require('pui-react-panels').Panel;
+ * var MyComponent = React.createClass({
+ *   render() {
+ *     return <Panel title="Header Text">Content Text</Panel>;
+ *   }
+ * });
+ * ```
+ *
+ * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#panel_react)
+ * @see [Pivotal UI CSS](http://styleguide.pivotal.io/objects.html#panel)
+ */
 var Panel = React.createClass({
   mixins: [PanelTypes],
 
@@ -52,6 +70,16 @@ var Panel = React.createClass({
   }
 });
 
+/**
+ * @component ShadowPanel
+ * @description A `<Panel>` with a shadow on the bottom
+ *
+ * @property title {String} Text to show as the header of the `<Panel>`
+ * @property shadowLevel {Number} The thickness (1-4) (defaults to `3`) of the shadow
+ *
+ * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#panel_react)
+ * @see [Pivotal UI CSS](http://styleguide.pivotal.io/objects.html#panel)
+ */
 var ShadowPanel = React.createClass({
   mixins: [PanelTypes],
 
@@ -80,11 +108,72 @@ function defPanel(props) {
 
 module.exports = {
   Panel,
+
+  /**
+   * @component SimplePanel
+   * @description A `<Panel>` with a simple rectangular border
+   *
+   * @property title {String} Text to show as the header of the `<Panel>`
+   *
+   * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#panel_react)
+   * @see [Pivotal UI CSS](http://styleguide.pivotal.io/objects.html#panel)
+   */
   SimplePanel: defPanel({kind: 'panel-simple'}),
+
+  /**
+   * @component BasicPanel
+   * @description A `<Panel>` with padding and a shadow on the bottom
+   *
+   * @property title {String} Text to show as the header of the `<Panel>`
+   *
+   * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#panel_react)
+   * @see [Pivotal UI CSS](http://styleguide.pivotal.io/objects.html#panel)
+   */
   BasicPanel: defPanel({kind: 'panel-basic'}),
+
+  /**
+   * @component BasicPanelAlt
+   * @description A `<Panel>` with padding, a shadow on the bottom, and a round border
+   *
+   * @property title {String} Text to show as the header of the `<Panel>`
+   *
+   * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#panel_react)
+   * @see [Pivotal UI CSS](http://styleguide.pivotal.io/objects.html#panel)
+   */
   BasicPanelAlt: defPanel({kind: 'panel-basic-alt'}),
+
+  /**
+   * @component ClickablePanel
+   * @description A `<Panel>` with a background that lightens when hovered to indicate it is clickable
+   *
+   * @property title {String} Text to show as the header of the `<Panel>`
+   *
+   * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#panel_react)
+   * @see [Pivotal UI CSS](http://styleguide.pivotal.io/objects.html#panel)
+   */
   ClickablePanel: defPanel({kind: 'panel-clickable'}),
+
+  /**
+   * @component ClickableAltPanel
+   * @description A `<Panel>` with a rounded border, a shadow on the bottom, and a background that lightens when hovered to indicate it is clickable
+   *
+   * @property title {String} Text to show as the header of the `<Panel>`
+   *
+   * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#panel_react)
+   * @see [Pivotal UI CSS](http://styleguide.pivotal.io/objects.html#panel)
+   */
   ClickableAltPanel: defPanel({kind: 'panel-clickable-alt'}),
+
+  /**
+   * @component HighlightPanel
+   * @description A `<Panel>` with a rounded border and a shadow on the bottom for highlighting important parts of a page
+   *
+   * @property title {String} Text to show as the header of the `<Panel>`
+   *
+   * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#panel_react)
+   * @see [Pivotal UI CSS](http://styleguide.pivotal.io/objects.html#panel)
+   */
   HighlightPanel: defPanel({kind: 'panel-highlight'}),
+
   ShadowPanel
 };

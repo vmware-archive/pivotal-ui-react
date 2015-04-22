@@ -1,4 +1,6 @@
 {
+  "version": "0.0.2",
+  "homepage": "http://styleguide.pivotal.io/react_beta.html#icon_react",
   "dependencies": {
     "react-fa": "^3.0.0",
     "pui-css-iconography": "*"

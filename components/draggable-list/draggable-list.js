@@ -25,6 +25,30 @@ function childrenIndices(children) {
   return children.map((child, i) => i);
 }
 
+/**
+ * @component DraggableList
+ * @description A list that can be re-ordered via drag-drop
+ *
+ * @property onDrop {Function} A callback called when the user re-orders list items
+ *
+ * @example ```js
+ * var DraggableList = require('pui-react-draggable-list').DraggableList;
+ * var DraggableListItem = require('pui-react-draggable-list').DraggableListItem;
+ * var MyComponent = React.createClass({
+ *   render() {
+ *     return (
+ *       <DraggableList onDrop={draggableListDropCallback}>
+ *         <DraggableListItem>Get me out of here!</DraggableListItem>
+ *         <DraggableListItem>LOL</DraggableListItem>
+ *         <DraggableListItem>Can't stop</DraggableListItem>
+ *       </DraggableList>
+ *     );
+ *   }
+ * });
+ * ```
+ *
+ * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#list_draggable_react)
+ */
 var DraggableList = React.createClass({
   propTypes: {
     onDrop: types.func
@@ -97,6 +121,12 @@ var DraggableList = React.createClass({
   }
 });
 
+/**
+ * @component DraggableListItem
+ * @description Denotes list items of a DraggableList
+ *
+ * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#list_draggable_react)
+ */
 var DraggableListItem = React.createClass({
   mixins: [HoverMixin],
 
