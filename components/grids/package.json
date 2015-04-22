@@ -1,5 +1,6 @@
 {
   "version": "0.0.3",
+  "description": "React components for laying-out content in a grid",
   "homepage": "http://styleguide.cfapps.io/react_beta.html#grid_react",
   "dependencies": {
     "classnames": "^1.2.0",

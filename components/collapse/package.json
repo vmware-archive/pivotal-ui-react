@@ -1,5 +1,6 @@
 {
   "version": "0.0.3",
+  "description": "React components providing accordions for showing and hiding content",
   "homepage": "http://styleguide.pivotal.io/react_beta.html#collapse_react",
   "dependencies": {
     "react-bootstrap": "^0.13.3",

@@ -1,5 +1,6 @@
 {
   "version": "0.0.3",
+  "description": "React components to display flash messages to the user",
   "homepage": "http://styleguide.pivotal.io/react_beta.html#alerts_react",
   "dependencies": {
     "react-bootstrap": "^0.13.3",

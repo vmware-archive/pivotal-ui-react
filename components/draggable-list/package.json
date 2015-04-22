@@ -1,5 +1,6 @@
 {
   "version": "0.0.3",
+  "description": "A React component for showing a list of items that can be re-ordered by the user",
   "homepage": "http://styleguide.pivotal.io/react_beta.html#list_draggable_react",
   "dependencies": {
     "classnames": "^1.2.0",

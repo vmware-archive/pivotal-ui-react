@@ -1,6 +1,6 @@
 var argv = require('yargs').argv;
 var gulp = require('gulp');
-var npm = require('npm')
+var npm = require('npm');
 var path = require('path');
 
 gulp.task('publish', function(){
