@@ -38,6 +38,22 @@ var SimpleTabs = React.createClass({
  *
  * @property defaultActiveKey {Number} Indicates which tab to show by default
  *
+ * @example ```js
+ * var SimpleAltTabs = require('pui-react-tabs').SimpleAltTabs;
+ * var Tab = require('pui-react-tabs').Tab;
+ * var MyComponent = React.createClass({
+ *   render() {
+ *     return (
+ *       <SimpleAltTabs defaultActiveKey={2}>
+ *         <Tab eventKey={1}>Content for tab 1</Tab>
+ *         <Tab eventKey={2}>Content for tab 2</Tab>
+ *         <Tab eventKey={3}>Content for tab 3</Tab>
+ *       </SimpleAltTabs>
+ *     );
+ *   }
+ * });
+ * ```
+ *
  * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#tabs_react)
  * @see [Pivotal UI CSS](http://styleguide.pivotal.io/objects.html#tab)
  */
