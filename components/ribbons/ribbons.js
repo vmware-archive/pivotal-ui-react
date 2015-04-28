@@ -5,7 +5,7 @@ var React = require('react');
  * @description Flashy text used to call out access, status, environment, etc.
  *
  * @example ```js
- * var RadioGroup = require('pui-react-ribbons').Ribbon;
+ * var Ribbon = require('pui-react-ribbons').Ribbon;
  * var MyComponent = React.createClass({
  *   render() {
  *     return <Ribbon>Acceptance Environment</Ribbon>
@@ -26,6 +26,15 @@ var Ribbon = React.createClass({
  * @component PrimaryRibbon
  * @description A `<Ribbon>` with an emphasized background color
  *
+ * @example ```js
+ * var PrimaryRibbon = require('pui-react-ribbons').PrimaryRibbon;
+ * var MyComponent = React.createClass({
+ *   render() {
+ *     return <PrimaryRibbon>Acceptance Environment</PrimaryRibbon>
+ *   }
+ * });
+ * ```
+ *
  * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#ribbons_react)
  * @see [Pivotal UI CSS](http://styleguide.pivotal.io/elements.html#ribbon)
  */
@@ -38,6 +47,15 @@ var PrimaryRibbon = React.createClass({
 /**
  * @component Banner
  * @description A larger, emphasized `<Ribbon>`
+ *
+ * @example ```js
+ * var Banner = require('pui-react-ribbons').Banner;
+ * var MyComponent = React.createClass({
+ *   render() {
+ *     return <Banner>Acceptance Environment</Banner>
+ *   }
+ * });
+ * ```
  *
  * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#ribbons_react)
  * @see [Pivotal UI CSS](http://styleguide.pivotal.io/elements.html#ribbon)
