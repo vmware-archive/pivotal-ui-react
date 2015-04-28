@@ -1,6 +1,6 @@
 {
   "version": "0.0.3",
-  "description": "A collection of React components for showing dropdown menus that can be triggered by the user",
+  "description": "A React dropdown component",
   "homepage": "http://styleguide.pivotal.io/react_beta.html#dropdown_react",
   "dependencies": {
     "react-bootstrap": "^0.13.3",
