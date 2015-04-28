@@ -141,6 +141,7 @@ function annotationsToMarkdown(file, annotations) {
 gulp.task('assets-readme', function() {
   return gulp.src('components/**/*.js')
     .pipe(through.obj(function(file, encoding, callback) {
+      if (path.basename(path.dirname(file.path)) !== path.basename(file.path, '.js')) return callback();
       var {ast: {comments}} = babel.transform(file.contents.toString(), {stage: 0});
       var annotations = parseCommentAst(comments);
       var packageJson = require(path.join(path.dirname(file.path), 'package.json'));
