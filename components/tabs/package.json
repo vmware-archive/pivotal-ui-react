@@ -1,5 +1,5 @@
 {
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React components for tab-based content toggling",
   "homepage": "http://styleguide.pivotal.io/react_beta.html#tabs_react",
   "dependencies": {

@@ -1,5 +1,5 @@
 {
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A React dropdown component",
   "homepage": "http://styleguide.pivotal.io/react_beta.html#dropdown_react",
   "dependencies": {
