@@ -4,7 +4,7 @@ var types = React.PropTypes;
 
 /**
  * @component Image
- * @description A wrapper around the `<image>` tag that adds linking and responsiveness
+ * @description A wrapper around the `<img>` tag that adds linking and responsiveness
  *
  * @property src {String} The URL to the image.
  * @property responsive {Boolean} Whether to have the image fill its container while preserving aspect ratio
