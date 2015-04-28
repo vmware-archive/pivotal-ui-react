@@ -3,7 +3,7 @@
   "description": "React components that provide containers for related content",
   "homepage": "http://styleguide.pivotal.io/react_beta.html#panel_react",
   "dependencies": {
-    "classname": "^1.2.0",
+    "classnames": "^1.2.0",
     "pui-css-panels": "^0"
   }
 }
