@@ -64,13 +64,13 @@ var BaseCollapse = React.createClass({
  * @property divider {Boolean} Adds a line between the accordion header and accordion body
  *
  * @example ```js
- * var BaseCollapse = require('pui-react-collapse').BaseCollapse;
+ * var Collapse = require('pui-react-collapse').Collapse;
  * var MyComponent = React.createClass({
  *   render() {
  *     return (
- *       <BaseCollapse header="Click to Toggle">
+ *       <Collapse header="Click to Toggle">
  *         <p>Toggleable content</p>
- *       </BaseCollapse>
+ *       </Collapse>
  *     );
  *   }
  * });
@@ -109,13 +109,13 @@ var Collapse = React.createClass({
  * @property divider {Boolean} Adds a line between the accordion header and accordion body
  *
  * @example ```js
- * var BaseCollapse = require('pui-react-collapse').BaseCollapse;
+ * var AltCollapse = require('pui-react-collapse').AltCollapse;
  * var MyComponent = React.createClass({
  *   render() {
  *     return (
- *       <BaseCollapse header="Click to Toggle">
+ *       <AltCollapse header="Click to Toggle">
  *         <p>Toggleable content</p>
- *       </BaseCollapse>
+ *       </AltCollapse>
  *     );
  *   }
  * });
