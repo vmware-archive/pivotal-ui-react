@@ -1,5 +1,5 @@
 var fs = require('fs');
-var babel = require('babel');
+var highland = require('highland');
 var gulp = require('gulp');
 var mkdirp = require('mkdirp');
 var packageTemplate = require('../templates/package.json');
@@ -7,6 +7,8 @@ var path = require('path');
 var plugins = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
 var through = require('through2');
+var File = require('vinyl');
+var {componentDocs} = require('../helpers/documentation_helper');
 const COPYRIGHT = '/*(c) Copyright 2015 Pivotal Software, Inc. All Rights Reserved.*/\n';
 
 gulp.task('watch', function() {
@@ -70,94 +72,32 @@ const README_FOOTER = (
 
 (c) Copyright 2015 Pivotal Software, Inc. All Rights Reserved.
 `);
-function parseAnnotation(annotations, name, value) {
-  // Parse `@property` annotations
-  if (name === 'property') {
-    annotations.properties = annotations.properties || [];
-    // Group property annotation by types and descriptions
-    let [propertyName, ...propertyTypes] = value.match(/\{.*?}\s*[^{]+|\S+/g);
-    propertyTypes = propertyTypes
-      // Extract `type` and `description` from strings that look like `{type} description`
-      .map(typeString => typeString.match(/\{(.*?)}\s*([\s\S]+)/).slice(1, 3))
-      // Convert to JSON
-      .reduce(
-        (types, [name, value]) => Object.assign(types, {[name]: value.trim()}),
-        {}
-      );
-    annotations.properties.push({name: propertyName, types: propertyTypes});
-  // Parse `@see` annotations
-  } else if (name === 'see') {
-    annotations.references = annotations.references || [];
-    annotations.references.push(value);
-  // Parse other annotations
-  } else {
-    annotations[name] = value.trim();
-  }
-  return annotations;
-}
-function parseCommentAst(commentNodes) {
-  return commentNodes
-    // Only process documentation blocks
-    .filter(commentNode => commentNode.value.match(/^\*[\s\S]*@component/))
-    // Extract @annotations
-    .map(commentNode => commentNode.value.match(/@[^@]+/g))
-    // Remove `*` characters and extra new lines
-    .map(rawAnnotations => rawAnnotations.map(
-      rawAnnotation => rawAnnotation.replace(/(?:\s*\n)?\s*\* ?/g, '\n').trim()
-    ))
-    // Extract `name` and `text` from a string that looks like '@name text'
-    .map(annotationStrings => annotationStrings.map(
-      annotationString => annotationString.match(/^@(\S+)\s+([\s\S]*)/).slice(1, 3)
-    ))
-    // Convert the result into JSON
-    .map(annotationTuples => annotationTuples.reduce(
-      (annotations, [name, value]) => parseAnnotation(annotations, name, value),
-      {}
-    ));
-}
-function annotationsToMarkdown(file, annotations) {
-  var components = annotations.map(annotation => {
-    var example = `${annotation.example}` || '';
-    var properties = (annotation.properties || [])
-      .map(property => {
-        var propertyTypes = Object.keys(property.types)
-          .map(type => `  - \`${type}\`: ${property.types[type]}`)
-          .join('\n');
-        return `- \`${property.name}\`\n${propertyTypes}\n`;
-      })
-      .join('\n');
-    return [
-      `### ${annotation.component}`,
-      annotation.description,
-      annotation.example,
-      'properties' in annotation ?
-        `#### Properties\n\n${properties}` :
-        ''
-    ].join('\n\n');
-  }).join('\n\n');
 
-  return ['## Components', components].join('\n\n');
+function readme(file) {
+  var packageJson = require(path.join(path.dirname(file.path), 'package.json'));
+  return [
+    `# pui-react-${path.basename(file.path, '.js')}`,
+    packageJson.description || '',
+    README_HEADER,
+    `See the [Pivotal UI Styleguide](${packageJson.homepage}) for fully rendered examples.`,
+    componentDocs(file),
+    README_FOOTER
+  ].join('\n\n');
 }
+
 gulp.task('assets-readme', function() {
-  return gulp.src('components/**/*.js')
-    .pipe(through.obj(function(file, encoding, callback) {
-      if (path.basename(path.dirname(file.path)) !== path.basename(file.path, '.js')) return callback();
-      var {ast: {comments}} = babel.transform(file.contents.toString(), {stage: 0});
-      var annotations = parseCommentAst(comments);
-      var packageJson = require(path.join(path.dirname(file.path), 'package.json'));
-      var readme = [
-        `# pui-react-${path.basename(file.path, '.js')}`,
-        packageJson.description || '',
-        README_HEADER,
-        `See the [Pivotal UI Styleguide](${packageJson.homepage}) for fully rendered examples.`,
-        annotationsToMarkdown(file, annotations),
-        README_FOOTER
-      ].join('\n\n');
-      callback(null, Object.assign(file, {
-        contents: new Buffer(readme),
+  return highland(gulp.src('components/*'))
+    .flatMap(dir => highland(
+      gulp.src(path.join(dir.path, '*.js'))
+        .pipe(plugins.concat(path.basename(dir.path)))
+    ))
+    .map(file =>
+      Object.assign(file, {
+        base: path.dirname(file.base),
+        contents: new Buffer(readme(file)),
         path: path.join(path.dirname(file.path), 'README.md')
-      }));
-    }))
+      })
+    )
     .pipe(gulp.dest('dist'));
 });
 

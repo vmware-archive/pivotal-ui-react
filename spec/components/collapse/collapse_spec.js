@@ -101,8 +101,6 @@ describe('BaseCollapse behavior', function() {
   beforeEach(function() {
     BaseCollapse = require('../../../components/collapse/collapse').BaseCollapse;
 
-    jasmine.clock().install();
-
     React.render((
       <BaseCollapse header="This is my heading">
         Collapse contents!
@@ -111,7 +109,6 @@ describe('BaseCollapse behavior', function() {
   });
 
   afterEach(function() {
-    jasmine.clock().uninstall();
     React.unmountComponentAtNode(root);
   });
 
