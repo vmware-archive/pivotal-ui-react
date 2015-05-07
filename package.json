@@ -44,7 +44,6 @@
     "lodash.sortby": "^3.1.1",
     "lodash.throttle": "^3.0.2",
     "mkdirp": "^0.5.0",
-    "npm": "^2.7.4",
     "pui-react-animation": "0.0.3",
     "pui-react-dropdowns": "0.0.2",
     "pui-react-iconography": "0.0.1",
