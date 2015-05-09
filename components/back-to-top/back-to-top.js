@@ -52,11 +52,7 @@ var BackToTop = React.createClass({
     var {visible} = this.state;
     var style = {display: 'inline', opacity: this.animate('opacity', visible ? 1 : 0, BackToTop.FADE_DURATION)};
 
-    return (
-      <div className="styleguide-component-wrapper">
-        <a className="back-to-top" role="button" onClick={this.scrollToTop} style={style}/>
-      </div>
-    );
+    return <a className="back-to-top" role="button" onClick={this.scrollToTop} style={style}/>;
   }
 });
 
