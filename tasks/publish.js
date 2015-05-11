@@ -3,7 +3,7 @@ var gulp = require('gulp');
 var npm = require('npm');
 var path = require('path');
 
-gulp.task('publish', function(){
+gulp.task('publish', ['build'], function(){
   var component = argv.component;
   if(!component) {
     console.log('Usage: gulp publish --component=componentName');
