@@ -56,23 +56,8 @@ npm link ../pivotal-ui-react/dist/tooltip
 ```
 
 ##Testing
- 
+
 To test the react components:
 ```sh
 gulp jasmine-ci
 ```
-
-To test Dr Frankenstyle:
-
-The first time you test, you need to install Dr Frankenstyle dependencies:
-```sh
-cd dr-frankenstyle
-npm install
-```
-
-Run all Dr Frankenstyle tests, from the root directory:
-```sh
-jasmine
-```
-
-
