@@ -18,6 +18,11 @@ PUI-react uses the CommonJS pattern of requiring modules to use components.
 To load the components for use in a browser, you will need a build tool like Webpack or Browserify.
 We also require ReactJS. The specific version is listed in our peer dependencies.
 
+For development, we have dependencies on:
+
+* **PhantomJS**: Used for running our headless Jasmine tests. Install via `brew install phantomjs`
+* **node-foreman**: Used for running our asset-compilation and jasmine server during development. Install via `npm install -g node-foreman`
+
 ## Development
 
 This library is intimately tied to Pivotal UI and development should be done on the Pivotal UI [styleguide](styleguide.pivotal.io).
