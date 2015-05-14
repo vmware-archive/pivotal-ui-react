@@ -93,7 +93,7 @@ var Modal = React.createClass({
       ) :
       null;
 
-    return <ReactCSSTransitionGroup transitionName="fade">{modalInnards}</ReactCSSTransitionGroup>;
+    return <ReactCSSTransitionGroup transitionName="modal-fade">{modalInnards}</ReactCSSTransitionGroup>;
   }
 });
 
