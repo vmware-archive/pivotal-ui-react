@@ -1,4 +1,5 @@
 var React = require('react/addons');
+var {DefaultH4} = require('pui-react-typography');
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 /**
@@ -84,7 +85,7 @@ var Modal = React.createClass({
                   <span>×</span>
                   <span className="sr-only">Close</span>
                 </button>
-                {this.props.title}
+                <DefaultH4 className="modal-title">{this.props.title}</DefaultH4>
               </div>
               {this.props.children}
             </div>

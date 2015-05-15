@@ -49,6 +49,7 @@
     "pui-react-dropdowns": "0.0.2",
     "pui-react-iconography": "0.0.1",
     "pui-react-media": "0.0.3",
+    "pui-react-typography": "0.0.4",
     "require-dir": "^0.3.0",
     "rimraf": "^2.3.2",
     "run-sequence": "^1.0.2",
