@@ -1,9 +1,11 @@
 {
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A React dropdown component",
   "homepage": "http://styleguide.pivotal.io/react_beta.html#dropdown_react",
   "dependencies": {
     "react-bootstrap": "^0.13.3",
-    "pui-css-dropdowns": "^0"
+    "pui-css-dropdowns": "^0",
+    "pui-css-iconography": "^0",
+    "pui-css-buttons": "^0"
   }
 }

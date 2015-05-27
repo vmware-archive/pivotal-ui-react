@@ -1,8 +1,9 @@
 {
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React components providing horizontal rules for dividing content",
   "homepage": "http://styleguide.pivotal.io/react_beta.html#divider_react",
   "dependencies": {
-    "classnames": "^1.2.0"
+    "classnames": "^1.2.0",
+    "pui-css-dividers": "^0"
   }
 }
