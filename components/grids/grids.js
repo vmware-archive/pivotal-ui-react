@@ -2,7 +2,7 @@ var React = require('react');
 var types = React.PropTypes;
 var classnames = require('classnames');
 
-var BootstrapRow = require('react-bootstrap/Row');
+var BootstrapRow = require('react-bootstrap').Row;
 
 /**
  * @component Row
@@ -82,6 +82,6 @@ var Row = React.createClass({
  * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#grid_react)
  * @see [Pivotal UI CSS](http://styleguide.pivotal.io/layout.html#grid)
  */
-var Col = require('react-bootstrap/Col');
+var Col = require('react-bootstrap').Col;
 
 module.exports = {Row, Col};

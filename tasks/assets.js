@@ -65,23 +65,17 @@ gulp.task('assets-license', function(){
 
 const GITHUB = 'https://github.com/pivotal-cf/pivotal-ui-react';
 const NPM = 'https://www.npmjs.com/browse/keyword/pivotal%20ui%20modularized';
-const README_HEADER = `Pivotal UI React ([GitHub](${GITHUB}), [npm](${NPM})) is a collection of [React](https://facebook.github.io/react/) components for rapidly building and prototyping UIs.`;
-
-const README_FOOTER = (
-`*****************************************
-
-(c) Copyright 2015 Pivotal Software, Inc. All Rights Reserved.
-`);
 
 function readme(file) {
   var packageJson = require(path.join(path.dirname(file.path), 'package.json'));
   return [
     `# pui-react-${path.basename(file.path, '.js')}`,
     packageJson.description || '',
-    README_HEADER,
+    `Pivotal UI React ([GitHub](${GITHUB}), [npm](${NPM})) is a collection of [React](https://facebook.github.io/react/) components for rapidly building and prototyping UIs.`,
+    `This component requires React v0.13`,
     `See the [Pivotal UI Styleguide](${packageJson.homepage}) for fully rendered examples.`,
     componentDocs(file),
-    README_FOOTER
+     `*****************************************\n\n(c) Copyright 2015 Pivotal Software, Inc. All Rights Reserved.\n`
   ].join('\n\n');
 }
 

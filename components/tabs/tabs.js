@@ -1,5 +1,5 @@
 var React = require('react');
-var TabbedArea = require('react-bootstrap/TabbedArea');
+var TabbedArea = require('react-bootstrap').TabbedArea;
 
 /**
  * @component SimpleTabs
@@ -72,7 +72,7 @@ var SimpleAltTabs = React.createClass({
  * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#tabs_react)
  * @see [Pivotal UI CSS](http://styleguide.pivotal.io/objects.html#tab)
  */
-var Tab = require('react-bootstrap/TabPane');
+var Tab = require('react-bootstrap').TabPane;
 
 module.exports = {
   SimpleTabs,

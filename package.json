@@ -61,8 +61,8 @@
   "dependencies": {
     "babel": "^5.1.11",
     "classnames": "^1.2.0",
-    "react": "0.12.1",
-    "react-bootstrap": "^0.13.0",
+    "react": "^0.13.3",
+    "react-bootstrap": "^0.23.0",
     "react-fa": "^3.0.0"
   }
 }

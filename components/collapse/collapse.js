@@ -1,6 +1,6 @@
 var React = require('react');
 var types = React.PropTypes;
-var BsPanel = require('react-bootstrap/Panel');
+var BsPanel = require('react-bootstrap').Panel;
 var classnames = require('classnames');
 
 var CollapseProps = {
@@ -40,7 +40,8 @@ var BaseCollapse = React.createClass({
     return {expanded: false};
   },
 
-  handleSelect() {
+  handleSelect(e) {
+    e.preventDefault();
     this.setState({expanded: !this.state.expanded});
   },
 
@@ -49,7 +50,7 @@ var BaseCollapse = React.createClass({
     var classes = classnames({'panel-divider': divider});
 
     return (
-      <BsPanel {...others} className={classes} collapsable expanded={this.state.expanded} onSelect={this.handleSelect} header={header}>
+      <BsPanel {...others} className={classes} collapsible expanded={this.state.expanded} onSelect={this.handleSelect} header={header}>
         {children}
       </BsPanel>
     );

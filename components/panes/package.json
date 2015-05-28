@@ -1,5 +1,5 @@
 {
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "React components that provide large browser-filling containers for content",
   "homepage": "http://styleguide.pivotal.io/react_beta.html#pane_react",
   "dependencies": {

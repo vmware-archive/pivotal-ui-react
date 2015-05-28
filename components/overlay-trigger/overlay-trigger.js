@@ -22,5 +22,5 @@ module.exports = {
    *
    * @see [Pivotal UI React](http://styleguide.pivotal.io/react_beta.html#tooltips_react)
    */
-  OverlayTrigger: require('react-bootstrap/OverlayTrigger')
+  OverlayTrigger: require('react-bootstrap').OverlayTrigger
 };

@@ -19,7 +19,10 @@ var packageTemplate = function(...overrides) {
     bugs: {
       url: "https://github.com/pivotal-cf/pivotal-ui-react/issues"
     },
-    homepage: "https://github.com/pivotal-cf/pivotal-ui-react"
+    homepage: "https://github.com/pivotal-cf/pivotal-ui-react",
+    peerDependencies: {
+      react: '^0.13.0'
+    }
   }, ...overrides), null, 2);
 };
 
